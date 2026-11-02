@@ -92,7 +92,12 @@ class LanguageSelectionViewController: BaseSettingsViewController, LanguageSelec
             let language = LanguageHelper.shared.availableLanguages[indexPath.row]
             let cell: UITableViewCell = self.reusableCell(withStyle: .subtitle, reuseIdentifier: "LangaugeCellShared")
             cell.textLabel?.text = language.displayName
-            cell.detailTextLabel?.text = language.localizedDisplay
+            if language.key == "en-PT" {
+                cell.detailTextLabel?.text = String(localizationKey: "Pirate English")
+            } else {
+                let locale = LanguageHelper.shared.locale ?? Locale.current
+                cell.detailTextLabel?.text = locale.localizedString(forIdentifier: language.key)?.capitalized(with: locale) ?? language.key
+            }
             if language.key == chosenCode {
                 cell.accessoryType = .checkmark
             }

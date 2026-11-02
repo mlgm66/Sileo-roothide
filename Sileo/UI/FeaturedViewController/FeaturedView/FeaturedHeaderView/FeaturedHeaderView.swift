@@ -35,7 +35,7 @@ class FeaturedHeaderView: FeaturedBaseView {
             headerLabel?.textColor = UIColor(white: 175.0/255.0, alpha: 1)
             headerLabel?.font = UIFont.systemFont(ofSize: 22)
         }
-        headerLabel?.text = title
+        headerLabel?.text = FeaturedBaseView.localizedText(title)
         
         let alignment = (dictionary["alignment"] as? Int) ?? 0
         switch alignment {

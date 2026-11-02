@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0D0D0D00000000000000011 /* DownloadedPackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000001 /* DownloadedPackageManager.swift */; };
+		D0D0D0D00000000000000012 /* DownloadedPackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000001 /* DownloadedPackageManager.swift */; };
+		D0D0D0D00000000000000013 /* DownloadedPackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000001 /* DownloadedPackageManager.swift */; };
+		D0D0D0D00000000000000021 /* DownloadedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000002 /* DownloadedPackagesViewController.swift */; };
+		D0D0D0D00000000000000022 /* DownloadedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000002 /* DownloadedPackagesViewController.swift */; };
+		D0D0D0D00000000000000023 /* DownloadedPackagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0D0D00000000000000002 /* DownloadedPackagesViewController.swift */; };
 		1716FD7321D5354100124AD2 /* FlaggedSourceWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */; };
 		172B2ED122F08B21000155B9 /* SourceLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED022F08B21000155B9 /* SourceLicense.swift */; };
 		172B2ED322F08D31000155B9 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172B2ED222F08D31000155B9 /* LicenseViewController.swift */; };
@@ -990,6 +996,9 @@
 		FBD910D024E06ABE00767541 /* SettingsColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */; };
 		FBDE129B24A91A2800138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
 		FBDE129C24A91ADC00138A7E /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */; };
+		A7C611010000000000000005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7C611010000000000000001 /* InfoPlist.strings */; };
+		A7C611010000000000000006 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7C611010000000000000001 /* InfoPlist.strings */; };
+		A7C611010000000000000007 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7C611010000000000000001 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1135,6 +1144,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D0D0D0D00000000000000001 /* DownloadedPackageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedPackageManager.swift; sourceTree = "<group>"; };
+		D0D0D0D00000000000000002 /* DownloadedPackagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedPackagesViewController.swift; sourceTree = "<group>"; };
 		1716FD7221D5354100124AD2 /* FlaggedSourceWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlaggedSourceWarningViewController.xib; sourceTree = "<group>"; };
 		172B2ED022F08B21000155B9 /* SourceLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLicense.swift; sourceTree = "<group>"; };
 		172B2ED222F08D31000155B9 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
@@ -1654,6 +1665,9 @@
 		FBBD0037240C31B3008E11B2 /* NewsArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsArticlesViewController.swift; sourceTree = "<group>"; };
 		FBD910CE24E0699000767541 /* SettingsColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsColorTableViewCell.swift; sourceTree = "<group>"; };
 		FBDE129A24A91A2800138A7E /* PaymentAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAuthenticator.swift; sourceTree = "<group>"; };
+		A7C611010000000000000002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "Base"; path = "Sileo/Base.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		A7C611010000000000000003 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Sileo/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		A7C611010000000000000004 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Sileo/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1748,6 +1762,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0D0D0D00000000000000003 /* DownloadedPackagesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0D0D0D00000000000000002 /* DownloadedPackagesViewController.swift */,
+			);
+			path = DownloadedPackagesViewController;
+			sourceTree = "<group>";
+		};
 		172E3CEB21D3B376007A2AE9 /* FlaggedSourceWarningViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2687,6 +2709,7 @@
 				F149E0BC20B6040B005CA30B /* Assets.xcassets */,
 				49CE7CB42607F9A400A20711 /* Icons */,
 				C373924721D5F80300E6F704 /* Categories.strings */,
+				A7C611010000000000000001 /* InfoPlist.strings */,
 				C373924521D5F80300E6F704 /* Errors.strings */,
 				C373923421D5E46900E6F704 /* Localizable.strings */,
 				C373925721D60B2600E6F704 /* Localizable.stringsdict */,
@@ -2757,6 +2780,7 @@
 			isa = PBXGroup;
 			children = (
 				E1EB0367268BA4B00097CEE1 /* DownloadManager.swift */,
+				D0D0D0D00000000000000001 /* DownloadedPackageManager.swift */,
 				F1705FED24CA15A2001596A0 /* DownloadOverrideProviding.swift */,
 			);
 			path = "Download Manager";
@@ -2923,6 +2947,7 @@
 				E14E4D6126DED566002AE3B4 /* NativePackageViewController */,
 				F11CD91020DBFF35000C62C3 /* CategoryViewController */,
 				F1D1141D20DF7A7300C8F051 /* DownloadsViewController */,
+				D0D0D0D00000000000000003 /* DownloadedPackagesViewController */,
 				F16C967220B7649E001408E9 /* FeaturedViewController */,
 				F1D3494121191DF700CADF87 /* NewsViewController */,
 				F1B99F0220DBE5C700374C27 /* PackageListViewController */,
@@ -3569,6 +3594,7 @@
 				E128190226BBFAA500D2553B /* LaunchScreen.storyboard in Resources */,
 				E128190326BBFAA500D2553B /* Licenses.plist in Resources */,
 				E128190426BBFAA500D2553B /* Localizable.strings in Resources */,
+				A7C611010000000000000007 /* InfoPlist.strings in Resources */,
 				E128190526BBFAA500D2553B /* Nightly~ipad@3x.png in Resources */,
 				E128190626BBFAA500D2553B /* Chimera~ipad@3x.png in Resources */,
 				E128190726BBFAA500D2553B /* Pride@2x.png in Resources */,
@@ -3713,6 +3739,7 @@
 				E1A2D12A281F30D70006411B /* MangoCrazy@3x.png in Resources */,
 				E1A2D124281F30D30006411B /* CottonCandy~ipad@3x.png in Resources */,
 				F139D13F22EA9209007F5C0D /* Localizable.strings in Resources */,
+				A7C611010000000000000006 /* InfoPlist.strings in Resources */,
 				E1D2E2D426C3383D00444437 /* Midnight~ipad@3x.png in Resources */,
 				F139D14522EA9209007F5C0D /* Localizable.stringsdict in Resources */,
 				E155D4B528CE5A1900AC7AE0 /* FlowerSileo@2x.png in Resources */,
@@ -3842,6 +3869,7 @@
 				1761F827227B5ADD00E03DC3 /* Licenses.plist in Resources */,
 				E155D4DF28CE5A7100AC7AE0 /* DarkMagic~ipad@2x.png in Resources */,
 				C373923621D5E46900E6F704 /* Localizable.strings in Resources */,
+				A7C611010000000000000005 /* InfoPlist.strings in Resources */,
 				E13BD77F2645E1AA006A5EF2 /* Nightly~ipad@3x.png in Resources */,
 				E1138BE92A3252ED00887BFE /* Dopamine@3x.png in Resources */,
 				E1D2E2CD26C3383D00444437 /* Midnight~ipad@2x.png in Resources */,
@@ -4088,6 +4116,8 @@
 				E128186226BBFAA500D2553B /* DepictionVideoView.swift in Sources */,
 				E128186326BBFAA500D2553B /* DepictionWebView.swift in Sources */,
 				E128186426BBFAA500D2553B /* DownloadManager.swift in Sources */,
+				D0D0D0D00000000000000011 /* DownloadedPackageManager.swift in Sources */,
+				D0D0D0D00000000000000021 /* DownloadedPackagesViewController.swift in Sources */,
 				E128186526BBFAA500D2553B /* Download.swift in Sources */,
 				E128186626BBFAA500D2553B /* PaymentPackageInfo.swift in Sources */,
 				E128186726BBFAA500D2553B /* CSTextView.swift in Sources */,
@@ -4295,6 +4325,8 @@
 				F139D0E722EA9209007F5C0D /* DepictionTabView.swift in Sources */,
 				E14E4D6426DED58F002AE3B4 /* NativePackageViewController.swift in Sources */,
 				E1EB0369268BA4B00097CEE1 /* DownloadManager.swift in Sources */,
+				D0D0D0D00000000000000012 /* DownloadedPackageManager.swift in Sources */,
+				D0D0D0D00000000000000022 /* DownloadedPackagesViewController.swift in Sources */,
 				F139D0C922EA9209007F5C0D /* DepictionTableButtonView.swift in Sources */,
 				E13488F429CC923F00B0A8D5 /* PackageProtocol.swift in Sources */,
 				F139D0B422EA9209007F5C0D /* DepictionTableTextView.swift in Sources */,
@@ -4483,6 +4515,8 @@
 				F1C5D9ED22D1ABDC0021BD89 /* DepictionVideoView.swift in Sources */,
 				F1C5D9EA22D1A9270021BD89 /* DepictionWebView.swift in Sources */,
 				E1EB0368268BA4B00097CEE1 /* DownloadManager.swift in Sources */,
+				D0D0D0D00000000000000013 /* DownloadedPackageManager.swift in Sources */,
+				D0D0D0D00000000000000023 /* DownloadedPackagesViewController.swift in Sources */,
 				F13AEE5B22F62B9D004BAA05 /* Download.swift in Sources */,
 				FB6F3D3424AA68A900E941F8 /* PaymentPackageInfo.swift in Sources */,
 				F14F7D5C240A7E7800062310 /* CSTextView.swift in Sources */,
@@ -4815,6 +4849,16 @@
 				F149E0BF20B6040B005CA30B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A7C611010000000000000001 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7C611010000000000000002 /* Base */,
+				A7C611010000000000000003 /* zh-Hans */,
+				A7C611010000000000000004 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -5199,7 +5243,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.5.1-15";
+				MARKETING_VERSION = "2.5.1-17";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5652,7 +5696,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.5.1-15";
+				MARKETING_VERSION = "2.5.1-17";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;
@@ -5717,7 +5761,7 @@
 					"$(PROJECT_DIR)/Deps/libzstd",
 					"$(PROJECT_DIR)/Deps/liblz4",
 				);
-				MARKETING_VERSION = "2.5.1-15";
+				MARKETING_VERSION = "2.5.1-17";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.sileo;

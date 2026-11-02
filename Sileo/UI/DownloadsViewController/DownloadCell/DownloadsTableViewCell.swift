@@ -72,7 +72,7 @@ class DownloadsTableViewCell: BaseSubtitleTableViewCell {
 
         if let err = errorDescription {
             self.progress = 0
-            self.subtitle = String(localizationKey: err)
+            self.subtitle = err
             
             if searchPackageKeyword != nil {
                 findDepButton.isHidden = false

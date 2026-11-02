@@ -16,6 +16,7 @@ final class SourcesViewController: SileoViewController {
     var presentRepoUrl: URL?
     var defaultPagePresent = false
     var detailedPageUserPresent = false
+    private var downloadedPagePresent = false
     
     private var tableView = SileoTableView(frame: .zero, style: .plain)
     public var refreshControl = UIRefreshControl()
@@ -56,20 +57,25 @@ final class SourcesViewController: SileoViewController {
         return repo.url?.host != "apt.bingner.com"
     }
     
-    func controller(indexPath: IndexPath) -> CategoryViewController {
-        let categoryVC = CategoryViewController(style: .plain)
-        categoryVC.title = String(localizationKey: "All_Packages.Title")
-        
-        if indexPath.section == 1 {
-            let repo = sortedRepoList[indexPath.row]
-            categoryVC.repoContext = repo
-            categoryVC.title = repo.repoName
+    func controller(indexPath: IndexPath) -> UIViewController {
+        let controller: UIViewController
+        if indexPath.section == 0 && indexPath.row == 1 {
+            controller = DownloadedPackagesViewController(style: .plain)
+        } else {
+            let categoryVC = CategoryViewController(style: .plain)
+            categoryVC.title = String(localizationKey: "All_Packages.Title")
+            if indexPath.section == 1 {
+                let repo = sortedRepoList[indexPath.row]
+                categoryVC.repoContext = repo
+                categoryVC.title = repo.repoName
+            }
+            controller = categoryVC
         }
         
         let touchGestureRecognizer = TouchGestureRecognizer(target: self, action: #selector(detailedPageUserInteracted))
-        categoryVC.view.addGestureRecognizer(touchGestureRecognizer)
+        controller.view.addGestureRecognizer(touchGestureRecognizer)
         
-        return categoryVC
+        return controller
     }
 
     @objc func detailedPageUserInteracted() {
@@ -78,6 +84,7 @@ final class SourcesViewController: SileoViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        _ = DownloadedPackageManager.shared
 
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,10 +117,12 @@ final class SourcesViewController: SileoViewController {
         #if targetEnvironment(macCatalyst)
         let nav = self.navigationItem
         nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSource(_:)))
-        nav.leftBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshSources(_:)))
+        nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Refresh"), style: .done, target: self, action: #selector(refreshSources(_:)))
         #endif
     
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(handleImageUpdate(_:)), name: SourcesTableViewCell.repoImageUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDownloadedPackages), name: DownloadedPackageManager.changedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDownloadedPackages), name: UIApplication.didBecomeActiveNotification, object: nil)
         
 // self.splitViewController?.isCollapsed may not be ready yet
 //        presentDefaultPage()
@@ -126,7 +135,7 @@ final class SourcesViewController: SileoViewController {
         if self.splitViewController?.isCollapsed == false {
             let indexPath = IndexPath(row: 0, section: 0)
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-            if !defaultPagePresent || presentRepoUrl != nil {
+            if !defaultPagePresent || presentRepoUrl != nil || downloadedPagePresent {
                 presentRepoUrl = nil
                 defaultPagePresent = true
                 detailedPageUserPresent = false
@@ -158,6 +167,10 @@ final class SourcesViewController: SileoViewController {
 
         if self.splitViewController?.isCollapsed == false
         {
+            if downloadedPagePresent {
+                tableView.selectRow(at: IndexPath(row: 1, section: 0), animated: false, scrollPosition: .none)
+                return
+            }
             if self.presentRepoUrl == nil
             {
                 self.presentDefaultPage()
@@ -191,8 +204,8 @@ final class SourcesViewController: SileoViewController {
     
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(refreshSources(_:)), discoverabilityTitle: "Refresh Sources"),
-            UIKeyCommand(input: "+", modifierFlags: .command, action: #selector(addSource(_:)), discoverabilityTitle: "Add Source")
+            UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(refreshSources(_:)), discoverabilityTitle: String(localizationKey: "Refresh Sources")),
+            UIKeyCommand(input: "+", modifierFlags: .command, action: #selector(addSource(_:)), discoverabilityTitle: String(localizationKey: "Add_Source.Title"))
         ]
     }
     
@@ -207,6 +220,7 @@ final class SourcesViewController: SileoViewController {
         NSLog("SileoLog: SourcesViewController.viewWillAppear")
         super.viewWillAppear(animated)
         updateSileoColors()
+        reloadDownloadedPackages()
         
         if inRefreshing {
             if let refreshControl = tableView.refreshControl {
@@ -261,15 +275,15 @@ final class SourcesViewController: SileoViewController {
             } else {
                 nav.leftBarButtonItem = UIBarButtonItem(title: String(localizationKey: "Edit"), style: .done, target: self, action: #selector(self.toggleEditing(_:)))
                 if #available(iOS 14.0, *) {
-                    let promptAddRepoAction = UIAction(title: "Add Repo", image: .init(systemName: "plus.circle")) { _ in
+                    let promptAddRepoAction = UIAction(title: String(localizationKey: "Add_Source.Title"), image: .init(systemName: "plus.circle")) { _ in
                         self.addSource(nil)
                     }
                     
-                    let importReposAction = UIAction(title: "Import Repos", image: .init(systemName: "archivebox")) { _ in
+                    let importReposAction = UIAction(title: String(localizationKey: "Import Repos"), image: .init(systemName: "archivebox")) { _ in
                         self.promptImportRepos()
                     }
                     
-                    let menu = UIMenu(title: "Add Repos", children: [promptAddRepoAction, importReposAction])
+                    let menu = UIMenu(title: String(localizationKey: "Add_Source.Title"), children: [promptAddRepoAction, importReposAction])
                     nav.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: promptAddRepoAction, menu: menu)
                 } else {
                     nav.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addSource(_:)))
@@ -566,6 +580,12 @@ final class SourcesViewController: SileoViewController {
         self.reSortList()
         self.tableView.reloadData()
     }
+
+    @objc private func reloadDownloadedPackages() {
+        guard isViewLoaded,
+              let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? SourcesTableViewCell else { return }
+        cell.installedLabel.text = "\(DownloadedPackageManager.shared.count)"
+    }
     
     @objc func exportSources(_ sender: Any?) {
         let titleString = String(localizationKey: "Export")
@@ -686,12 +706,12 @@ final class SourcesViewController: SileoViewController {
             textField.addTarget(self, action: #selector(Self.textFieldDidChange(_:)), for: .editingChanged)
         }
         alert.addTextField { textField in
-            textField.placeholder = "Suites"
+            textField.placeholder = String(localizationKey: "Suites")
             textField.text = suites
             textField.keyboardType = .URL
         }
         alert.addTextField { textField in
-            textField.placeholder = "Components"
+            textField.placeholder = String(localizationKey: "Components")
             textField.text = components
             textField.keyboardType = .URL
         }
@@ -834,7 +854,7 @@ extension SourcesViewController: UITableViewDataSource { // UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return 2
         } else {
             self.reSortList()
             return sortedRepoList.count
@@ -903,6 +923,7 @@ extension SourcesViewController: UITableViewDataSource { // UITableViewDataSourc
         let cell = (tableView.dequeueReusableCell(withIdentifier: "SourcesViewControllerCellidentifier") as? SourcesTableViewCell) ??
             SourcesTableViewCell(style: .subtitle, reuseIdentifier: "SourcesViewControllerCellidentifier")
 
+        cell.showsDownloadedPackages = indexPath.section == 0 && indexPath.row == 1
         if indexPath.section == 0 {
             cell.repo = nil
         } else {
@@ -929,11 +950,11 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
     
     #if !targetEnvironment(macCatalyst)
     func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        action == #selector(UIResponderStandardEditActions.copy(_:)) 
+        indexPath.section == 1 && action == #selector(UIResponderStandardEditActions.copy(_:))
     }
 
     func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
-        if action != #selector(UIResponderStandardEditActions.copy(_:)) {
+        if indexPath.section != 1 || action != #selector(UIResponderStandardEditActions.copy(_:)) {
             return
         }
         
@@ -942,17 +963,18 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
     }
     #else
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        UIContextMenuConfiguration(identifier: nil,
+        guard indexPath.section == 1 else { return nil }
+        return UIContextMenuConfiguration(identifier: nil,
                                    previewProvider: nil) { [weak self] _ in
-            let copyAction = UIAction(title: "Copy") { [weak self] _ in
+            let copyAction = UIAction(title: String(localizationKey: "Copy")) { [weak self] _ in
                 let repo = self?.sortedRepoList[indexPath.row]
                 UIPasteboard.general.string = repo?.aptSource
             }
-            let deleteAction = UIAction(title: "Remove") { [weak self] _ in
+            let deleteAction = UIAction(title: String(localizationKey: "Remove")) { [weak self] _ in
                 guard let strong = self else { return }
                 strong.deleteRepo(at: indexPath)
             }
-            let refreshAction = UIAction(title: "Refresh") { [weak self] _ in
+            let refreshAction = UIAction(title: String(localizationKey: "Refresh")) { [weak self] _ in
                 guard let strong = self else { return }
                 let repo = strong.sortedRepoList[indexPath.row]
                 strong.updateSpecific([repo])
@@ -963,7 +985,7 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
     #endif
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
+        indexPath.section == 1
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -979,11 +1001,11 @@ extension SourcesViewController: UITableViewDelegate { // UITableViewDelegate
     
     func tableViewSelectRowAt(tableView: UITableView, indexPath: IndexPath) {
         
-        let categoryVC = self.controller(indexPath: indexPath)
-        let navController = SileoNavigationController(rootViewController: categoryVC)
+        let controller = self.controller(indexPath: indexPath)
+        let navController = SileoNavigationController(rootViewController: controller)
+        downloadedPagePresent = indexPath.section == 0 && indexPath.row == 1
+        self.presentRepoUrl = (controller as? CategoryViewController)?.repoContext?.url
         self.splitViewController?.showDetailViewController(navController, sender: self)
-        
-        self.presentRepoUrl = categoryVC.repoContext?.url
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

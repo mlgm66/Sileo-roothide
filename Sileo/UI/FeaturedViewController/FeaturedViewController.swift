@@ -69,7 +69,7 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
                 if status != 0 || output != "root\n" {
                     DispatchQueue.main.sync {
                         let alertController = UIAlertController(title: String(localizationKey: "Installation_Error.Title", type: .error),
-                                                                message: "\(String(localizationKey: "Installation_Error.Body", type: .error))\n Output = \(output)\n Status = \(status)",
+                                                                message: String(format: String(localizationKey: "%@\nOutput: %@\nStatus: %ld", type: .error), String(localizationKey: "Installation_Error.Body", type: .error), output, status),
                                                                 preferredStyle: .alert)
                         self.present(alertController, animated: true, completion: nil)
                     }
@@ -253,12 +253,16 @@ final class FeaturedViewController: SileoViewController, UIScrollViewDelegate, F
     }
     
     private class func showXinaWarning() {
-        let alert = UIAlertController(title: "XinaA15 no longer supported", message: "XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Guide", style: .default) { _ in
+        let message = String(
+            localizationKey: "XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max.",
+            type: .error
+        )
+        let alert = UIAlertController(title: String(localizationKey: "XinaA15 no longer supported", type: .error), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localizationKey: "Guide"), style: .default) { _ in
             UIApplication.shared.open(URL(string: "https://ios.cfw.guide/installing-fugu15max/")!)
             exit(0)
         })
-        alert.addAction(UIAlertAction(title: "Close", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: String(localizationKey: "Close"), style: .destructive) { _ in
             exit(0)
         })
         Thread.mainBlock {

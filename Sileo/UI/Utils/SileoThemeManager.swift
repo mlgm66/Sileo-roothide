@@ -78,9 +78,9 @@ class SileoThemeManager: NSObject {
             themeList.append(systemTheme)
         }
         
-        var defaultTheme = "Sileo Light"
+        var defaultTheme = "Sileo_Light"
         if #available(iOS 13.0, *) {
-            defaultTheme = "Sileo Adaptive"
+            defaultTheme = "Sileo_Adaptive"
         }
         
         let fallbackColor = UIColor(red: 44/255, green: 177/255, blue: 190/255, alpha: 1)

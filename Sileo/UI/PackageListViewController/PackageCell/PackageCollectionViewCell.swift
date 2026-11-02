@@ -211,6 +211,8 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         if orientation == (RTL ? .right : .left) {
             if queueFound != .none {
                 actions.append(cancelAction(package))
+            } else if package.filename != nil && package.sourceRepo != nil && package.local_deb == nil {
+                actions.append(downloadAction(package))
             }
             return actions
         }
@@ -284,6 +286,84 @@ extension PackageCollectionViewCell: SwipeCollectionViewCellDelegate {
         }
         cancel.image = UIImage(systemNameOrNil: "x.circle")
         return cancel
+    }
+
+    private func downloadAction(_ package: Package) -> SwipeAction {
+        let action = SwipeAction(style: .default, title: String(localizationKey: "Downloaded_Packages.Download")) { [weak self] _, _ in
+            guard let self = self, let window = self.window else { return }
+            self.hideSwipe(animated: true)
+            self.requestDownload(package, in: window)
+        }
+        action.image = UIImage(systemNameOrNil: "arrow.down.doc")
+        action.backgroundColor = .systemBlue
+        return action
+    }
+
+    private func requestDownload(_ package: Package, in window: UIWindow) {
+        guard !DownloadManager.shared.queueRunning else { return }
+        guard package.commercial, let repo = package.sourceRepo else {
+            presentDownload(package, in: window)
+            return
+        }
+        PaymentManager.shared.getPaymentProvider(for: repo) { error, provider in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.presentAlert(paymentError: error, title: String(localizationKey: "Downloaded_Packages.Failed"))
+                    return
+                }
+                guard let provider = provider else {
+                    self.presentAlert(paymentError: .noPaymentProvider, title: String(localizationKey: "Downloaded_Packages.Failed"))
+                    return
+                }
+                guard provider.isAuthenticated else {
+                    PaymentAuthenticator.shared.authenticate(provider: provider, window: window) { error, success in
+                        if let error = error {
+                            self.presentAlert(paymentError: error, title: String(localizationKey: "Downloaded_Packages.Failed"))
+                        } else if success {
+                            self.requestDownload(package, in: window)
+                        }
+                    }
+                    return
+                }
+                self.updatePurchaseStatus(provider, package) { purchased in
+                    DispatchQueue.main.async {
+                        if purchased {
+                            self.presentDownload(package, in: window)
+                        } else {
+                            self.presentAlert(paymentError: PaymentError(message: String(localizationKey: "Downloaded_Packages.Purchase_Required")),
+                                              title: String(localizationKey: "Downloaded_Packages.Failed"))
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func presentDownload(_ package: Package, in window: UIWindow) {
+        guard !DownloadManager.shared.queueRunning, var presenter = window.rootViewController else { return }
+        while let presented = presenter.presentedViewController { presenter = presented }
+        let manager = DownloadedPackageManager.shared
+        let alert = UIAlertController(title: package.name, message: String(localizationKey: "Loading"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: .cancel) { _ in manager.cancelDownload() })
+        presenter.present(alert, animated: true) {
+            manager.download(package, progress: { message in alert.message = message }) { result in
+                alert.dismiss(animated: true) {
+                    let title: String
+                    let message: String
+                    switch result {
+                    case .success:
+                        title = String(localizationKey: "Downloaded_Packages.Complete")
+                        message = String(localizationKey: "Downloaded_Packages.Saved")
+                    case .failure(let error):
+                        title = String(localizationKey: "Downloaded_Packages.Failed")
+                        message = error.localizedDescription
+                    }
+                    let resultAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    resultAlert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .default))
+                    SileoAppDelegate.presentController(resultAlert)
+                }
+            }
+        }
     }
     
     private func uninstallAction(_ package: Package) -> SwipeAction {

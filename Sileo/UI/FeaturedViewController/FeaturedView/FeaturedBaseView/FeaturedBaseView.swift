@@ -13,6 +13,23 @@ protocol FeaturedViewDelegate: DepictionViewDelegate {
 }
 
 open class FeaturedBaseView: DepictionBaseView {
+    static func localizedText(_ text: String) -> String {
+        switch text {
+        case "Hot Right Now":
+            return String(localizationKey: "Hot Right Now")
+        case "What We're Using":
+            return String(localizationKey: "What We're Using")
+        case "Twitter":
+            return String(localizationKey: "X")
+        case "Website":
+            return String(localizationKey: "Website")
+        case "Support":
+            return String(localizationKey: "Support")
+        default:
+            return text
+        }
+    }
+
     @objc override class func view(dictionary: [String: Any], viewController: UIViewController, tintColor: UIColor?, isActionable: Bool) -> DepictionBaseView? {
         guard let className = dictionary["class"] as? String else {
             return nil

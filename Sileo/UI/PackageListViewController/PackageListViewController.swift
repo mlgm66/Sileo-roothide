@@ -701,7 +701,7 @@ extension PackageListViewController {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if findWhatFuckingSectionThisIs(indexPath.section) == .searchHistoryList {
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-                let copyItemAction = UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc")) { _ in
+                let copyItemAction = UIAction(title: String(localizationKey: "Copy"), image: UIImage(systemName: "doc.on.doc")) { _ in
                     UIPasteboard.general.string = searchHistory[safe: indexPath.row]
                 }
                 

@@ -19,7 +19,7 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>$(PRODUCT_NAME) Deb Package</string>
+			<string>Debian Package</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
@@ -29,7 +29,7 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>$(PRODUCT_NAME) Sources File</string>
+			<string>APT Sources File</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
@@ -39,7 +39,7 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>$(PRODUCT_NAME) List File</string>
+			<string>APT List File</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
@@ -173,7 +173,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>$(PRODUCT_NAME) Deb Package</string>
+			<string>Debian Package</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
@@ -199,7 +199,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>$(PRODUCT_NAME) Sources File</string>
+			<string>APT Sources File</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
@@ -223,7 +223,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>$(PRODUCT_NAME) List File</string>
+			<string>APT List File</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>

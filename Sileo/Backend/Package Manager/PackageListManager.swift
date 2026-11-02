@@ -606,7 +606,7 @@ final class PackageListManager {
                 
                 completion?()
                 
-                let alert = UIAlertController(title: "", message: "No RootHide Package(s)", preferredStyle: .alert)
+                let alert = UIAlertController(title: "", message: String(localizationKey: "No RootHide Package(s)"), preferredStyle: .alert)
                 
                 let okAction = UIAlertAction(title: String(localizationKey: "OK"), style: .default) { _ in
                     alert.dismiss(animated: true, completion: nil)

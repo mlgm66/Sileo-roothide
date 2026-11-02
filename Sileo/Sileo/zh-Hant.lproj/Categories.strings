@@ -19,3 +19,18 @@
 "Data_Storage" = "資料儲存";
 "Terminal_Support" = "終端機支援";
 "Text_Editors" = "文字編輯器";
+
+"System" = "系統";
+"Libraries" = "函式庫";
+"Development" = "開發工具";
+"Archiving" = "壓縮與封存";
+"Administration" = "系統管理";
+"Packaging" = "套件管理";
+"Networking" = "網路";
+"Keyrings" = "金鑰圈";
+"Application" = "應用程式";
+"Localizations" = "語言套件";
+"Security" = "安全性";
+"Terminal Support" = "終端機支援";
+"Data Storage" = "資料儲存";
+"Text Editors" = "文字編輯器";

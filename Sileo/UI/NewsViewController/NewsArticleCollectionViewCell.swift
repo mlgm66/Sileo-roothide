@@ -26,9 +26,9 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
             if let locale = LanguageHelper.shared.locale {
                 formatter.locale = locale
             }
-            let dateText = DateFormatter.localizedString(from: article?.date ?? Date(),
-                                                         dateStyle: DateFormatter.Style.long,
-                                                         timeStyle: DateFormatter.Style.none)
+            formatter.dateStyle = .long
+            formatter.timeStyle = .none
+            let dateText = formatter.string(from: article?.date ?? Date())
             dateLabel?.text = dateText
             cardDateLabel?.text = dateText
             excerptLabel?.text = article?.body
@@ -75,9 +75,9 @@ class NewsArticleCollectionViewCell: UICollectionViewCell {
             }
             cardView?.isHidden = false
             
-            var text = article?.type ?? "Editorial"
-            if article?.author != nil {
-                text += " by " + (article?.author)!
+            var text = article?.type ?? String(localizationKey: "Editorial")
+            if let author = article?.author {
+                text = String(format: String(localizationKey: "%@ by %@"), text, author)
             }
             cardDateLabel?.text = text
                        

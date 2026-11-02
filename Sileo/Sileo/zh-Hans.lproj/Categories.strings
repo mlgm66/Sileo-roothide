@@ -16,6 +16,21 @@
 "Addons" = "附加";
 "Games" = "游戏";
 "Developer" = "开发者";
-"Data_Storage" = "数据储存";
+"Data_Storage" = "数据存储";
 "Terminal_Support" = "终端支持";
-"Text_Editors" = "文本编辑";
+"Text_Editors" = "文本编辑器";
+
+"System" = "系统";
+"Libraries" = "运行库";
+"Development" = "开发工具";
+"Archiving" = "压缩与归档";
+"Administration" = "系统管理";
+"Packaging" = "软件包管理";
+"Networking" = "网络";
+"Keyrings" = "密钥环";
+"Application" = "应用程序";
+"Localizations" = "语言包";
+"Security" = "安全";
+"Terminal Support" = "终端支持";
+"Data Storage" = "数据存储";
+"Text Editors" = "文本编辑器";

@@ -116,11 +116,8 @@ class NewsViewController: SileoViewController, UICollectionViewDataSource, UICol
         super.viewWillDisappear(animated)
 
         self.navigationController?.navigationBar._hidesShadow = false
-
-        for cell in collectionView.visibleCells {
-            if let packageCell = cell as? PackageCollectionViewCell {
-                packageCell.hideSwipe(animated: false)
-            }
+        for case let cell as PackageCollectionViewCell in collectionView.visibleCells {
+            cell.hideSwipe(animated: false)
         }
     }
     

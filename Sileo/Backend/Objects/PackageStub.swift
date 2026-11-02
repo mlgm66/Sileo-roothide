@@ -21,12 +21,12 @@ struct PackageStub: Codable {
     public var firstSeen: Int64?
     
     static func createTable(database: Connection) {
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
+        let guid = SQLite.Expression<String>("guid")
+        let package = SQLite.Expression<String>("package")
+        let version = SQLite.Expression<String>("version")
+        let firstSeen = SQLite.Expression<Int64>("firstSeen")
+        let userRead = SQLite.Expression<Int64>("userRead")
+        let repoURL = SQLite.Expression<String>("repoURL")
         let packages = Table("Packages")
         _ = try? database.run(packages.create(ifNotExists: true,
                                               block: { tbd in
@@ -45,7 +45,7 @@ struct PackageStub: Codable {
         var timestamps: [Int64] = []
         let packages = Table("Packages")
         
-        let firstSeen = Expression<Int64>("firstSeen")
+        let firstSeen = SQLite.Expression<Int64>("firstSeen")
         do {
             for stamps in try database.prepare(packages.select(firstSeen).select(distinct: firstSeen).order(firstSeen.desc)) {
                 let stamp = stamps[firstSeen]

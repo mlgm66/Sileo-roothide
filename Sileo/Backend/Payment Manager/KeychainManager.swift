@@ -101,7 +101,7 @@ final class KeychainManager {
         let authContext = LAContext()
         authContext.evaluateAccessControl(accessControl,
                                           operation: .useItem,
-                                          localizedReason: String(localizationKey: "Authenticate to complete your purchase")) { [self] (success, error) in
+                                          localizedReason: String(localizationKey: "Authenticate_To_Purchase")) { [self] (success, error) in
             guard success else { return completion(nil) }
             var query = [
                 kSecClass as String: kSecClassGenericPassword,

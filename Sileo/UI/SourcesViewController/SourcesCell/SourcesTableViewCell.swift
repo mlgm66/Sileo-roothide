@@ -12,6 +12,7 @@ import Evander
 class SourcesTableViewCell: BaseSubtitleTableViewCell {
     
     static var repoImageUpdate = Notification.Name("Sileo.RepoImageUpdate")
+    public var showsDownloadedPackages = false
     
     public weak var repo: Repo? = nil {
         didSet {
@@ -21,6 +22,12 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
                 self.progress = repo.totalProgress
                 self.image(repo)
                 installedLabel.text = "\(repo.installedPackages?.count ?? 0)"
+            } else if showsDownloadedPackages {
+                self.title = String(localizationKey: "Downloaded_Packages.Title")
+                self.subtitle = String(localizationKey: "Downloaded_Packages.Cell_Subtitle")
+                self.icon = UIImage(named: "Downloaded Packages")
+                self.progress = 0
+                installedLabel.text = "\(DownloadedPackageManager.shared.count)"
             } else {
                 self.title = String(localizationKey: "All_Packages.Title")
                 self.subtitle = String(localizationKey: "All_Packages.Cell_Subtitle")
@@ -104,6 +111,7 @@ class SourcesTableViewCell: BaseSubtitleTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        showsDownloadedPackages = false
         self.repo = nil
     }
 

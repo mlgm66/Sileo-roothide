@@ -140,7 +140,7 @@ STRIP = xcrun strip
 
 ifneq ($(MAC), 1)
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoStore"
-SILEO_ID   = org.coolstar.sileo
+SILEO_ID   = org.mlgm.sileo
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "sileo"
 SILEO_ID   = sileo
@@ -159,7 +159,7 @@ SILEO_ID   = sileobeta
 SILEO_APP  = Sileo.app
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoBeta"
-SILEO_ID   = org.coolstar.sileobeta
+SILEO_ID   = org.mlgm.sileobeta
 SILEO_APP  = Sileo-Beta.app
 endif
 ICON = https:\/\/getsileo.app\/img\/icon.png
@@ -175,7 +175,7 @@ SILEO_ID   = sileonightly
 SILEO_APP  = Sileo.app
 else
 export PRODUCT_BUNDLE_IDENTIFIER = "org.coolstar.SileoNightly"
-SILEO_ID   = org.coolstar.sileonightly
+SILEO_ID   = org.mlgm.sileonightly
 SILEO_APP  = Sileo-Nightly.app
 endif
 export DISPLAY_NAME = "Sileo Nightly"

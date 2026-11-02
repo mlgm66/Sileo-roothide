@@ -163,14 +163,12 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
         self.updateTintColor()
         
         // Force all view controllers to load now
-        for (index, controller) in (tabBarController.viewControllers ?? []).enumerated() {
+        for (controller, titleKey) in zip(tabBarController.viewControllers ?? [], ["Featured_Page", "News_Page", "Sources_Page", "Packages_Page", "Search_Page"]) {
             _ = controller.view
             if let navController = controller as? UINavigationController {
                 _ = navController.viewControllers[0].view
             }
-            if index == 4 {
-                controller.tabBarItem._setInternalTitle(String(localizationKey: "Search_Page"))
-            }
+            controller.tabBarItem._setInternalTitle(String(localizationKey: titleKey))
         }
     }
     
@@ -317,8 +315,8 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                             try FileManager.default.copyItem(at: url, to: newurl)
                         } catch {
                             NSLog("SileoLog: failed to stage deb: \(error)")
-                            let alert = UIAlertController(title: "Bad Deb", message: "The provided deb file could not be read", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                            let alert = UIAlertController(title: String(localizationKey: "Bad Deb", type: .error), message: String(localizationKey: "The provided deb file could not be read", type: .error), preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel))
                             self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                             return
                         }
@@ -328,8 +326,8 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
                         }
                         
                         guard let package = PackageListManager.shared.package(url: newurl) else {
-                            let alert = UIAlertController(title: "Bad Deb", message: "The provided deb file could not be read", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                            let alert = UIAlertController(title: String(localizationKey: "Bad Deb", type: .error), message: String(localizationKey: "The provided deb file could not be read", type: .error), preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel))
                             self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                             return
                         }
@@ -402,7 +400,7 @@ class SileoAppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDe
             tabBarController.closePopup(animated: true)
             tabBarController.selectedViewController = packageListNVC
             
-            let title = String(localizationKey: "Sileo")
+            let title = "Sileo"
             let msg = String(localizationKey: "Upgrade_All_Shortcut_Processing_Message")
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             SileoAppDelegate.presentController(alert)

@@ -21,11 +21,17 @@ hook(_UIVisualEffectSubview)
     if (@available(iOS 13, *)){
         if ([self isKindOfClass:NSClassFromString(@"_UIVisualEffectBackdropView")]) {
             NSMutableArray *filtersMutable = [filters mutableCopy];
+            BOOL adjustsMaterialColor = NO;
             for (_UIVisualEffectFilterEntry *filter in filters){
                 if ([[filter filterName] isEqualToString:@"luminanceCurveMap"] ||
                     [[filter filterName] isEqualToString:@"colorBrightness"]){
                     [filtersMutable removeObject:filter];
+                    adjustsMaterialColor = YES;
                 }
+            }
+            if (!adjustsMaterialColor) {
+                _orig(void, filters);
+                return;
             }
             _orig(void, filtersMutable);
             UIColor *backgroundColor = nil;

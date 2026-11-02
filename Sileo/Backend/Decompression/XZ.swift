@@ -38,7 +38,7 @@ final class XZ {
     }
 }
 
-enum XZError: String, Error {
+enum XZError: String, LocalizedError {
     case fileLoad = "Failed to load file"
     case allocation = "Memory Allocation Failed"
     case unsupportedFlags = "Unsupported Decompressor Flags"
@@ -48,6 +48,10 @@ enum XZError: String, Error {
     case corrupt = "Input file is corrupt"
     case unknown = "Unknown Error"
     
+    var errorDescription: String? {
+        String(localizationKey: rawValue, type: .error)
+    }
+
     init(error: UInt8) {
         switch error {
         case 1: self = .allocation

@@ -30,18 +30,21 @@ final class DownloadManager {
     }()
     
     enum Error: LocalizedError {
+        case sizeMismatch(expected: String, actual: String)
         case hashMismatch(packageHash: String, refHash: String)
         case untrustedPackage(packageID: String)
         case debugNotAllowed
         
         public var errorDescription: String? {
             switch self {
+            case let .sizeMismatch(expected, actual):
+                return String(format: String(localizationKey: "Download_Size_Mismatch", type: .error), expected, actual)
             case let .hashMismatch(packageHash, refHash):
                 return String(format: String(localizationKey: "Download_Hash_Mismatch", type: .error), packageHash, refHash)
             case let .untrustedPackage(packageID):
                 return String(format: String(localizationKey: "Untrusted_Package", type: .error), packageID)
             case .debugNotAllowed:
-                return "Packages cannot be added to the queue during install"
+                return String(localizationKey: "Packages cannot be added to the queue during install", type: .error)
             }
         }
     }
@@ -54,6 +57,18 @@ final class DownloadManager {
             switch self {
             case .sha256: return .sha256
             case .sha512: return .sha512
+            }
+        }
+    }
+
+    private enum Patcher: String, CaseIterable {
+        case umbra = "wiki.qaq.umbra.patcher"
+        case rootHide = "com.roothide.patcher"
+
+        var name: String {
+            switch self {
+            case .umbra: return "Umbra Patcher"
+            case .rootHide: return "RootHide Patcher"
             }
         }
     }
@@ -227,32 +242,19 @@ final class DownloadManager {
                     return
                 }
                 
-                let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)
-                let fileSize = attributes?[FileAttributeKey.size] as? Int
-                let fileSizeStr = String(format: "%ld", fileSize ?? 0)
-                
                 download.message = nil
-                if fileSizeStr != package.size {
-                    download.failureReason = String(format: String(localizationKey: "Download_Size_Mismatch", type: .error),
-                                                    package.size ?? "nil", fileSizeStr)
+                do {
+                    download.success = try self.verifyRepoPackage(package: package, fileURL: fileURL)
+                    download.progress = 1
+                } catch let error {
                     download.success = false
                     download.progress = 0
-                    
-                } else {
-                    
-                    do {
-                        download.success = try self.verifyRepoPackage(package: package, fileURL: fileURL)
-                        download.progress = 1
-                    } catch let error {
-                        download.success = false
-                        download.progress = 0
-                        download.failureReason = error.localizedDescription
-                    }
-                    
-#if TARGET_SANDBOX || targetEnvironment(simulator)
-                    try? FileManager.default.removeItem(at: fileURL)
-#endif
+                    download.failureReason = error.localizedDescription
                 }
+
+#if TARGET_SANDBOX || targetEnvironment(simulator)
+                try? FileManager.default.removeItem(at: fileURL)
+#endif
                 
                 self.viewController.updateDownloadStatus(download: download)
                 
@@ -373,7 +375,14 @@ final class DownloadManager {
         return true
     }
     
-    private func verifyRepoPackage(package: Package, fileURL: URL) throws -> Bool {
+    static func verifyPackageFile(package: Package, fileURL: URL) throws {
+        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)
+        let fileSize = attributes?[FileAttributeKey.size] as? Int
+        let fileSizeStr = String(format: "%ld", fileSize ?? 0)
+        guard fileSizeStr == package.size else {
+            throw Error.sizeMismatch(expected: package.size ?? "nil", actual: fileSizeStr)
+        }
+
         let packageControl = package.rawControl
     
         let supportedHashTypes = PackageHashType.allCases.compactMap { type in packageControl[type.rawValue].map { (type, $0) } }
@@ -401,7 +410,11 @@ final class DownloadManager {
         guard packageIsValid else {
             throw Error.hashMismatch(packageHash: badHash, refHash: badRefHash)
         }
-        
+    }
+
+    private func verifyRepoPackage(package: Package, fileURL: URL) throws -> Bool {
+        try Self.verifyPackageFile(package: package, fileURL: fileURL)
+
         #if !TARGET_SANDBOX && !targetEnvironment(simulator)
         let packageID = aptEncoded(string: package.package, isArch: false)
         let version = aptEncoded(string: package.version, isArch: false)
@@ -463,7 +476,7 @@ final class DownloadManager {
         guard rawUninstalls.count == uninstallIdentifiers.count else {
             rawUninstalls.map({NSLog("SileoLog: rawUninstalls=\($0.package) \($0.package)")})
             uninstallIdentifiers.map({NSLog("SileoLog: uninstallIdentifiers=\($0)")})
-            throw APTParserErrors.blankJsonOutput(error: "Uninstall Identifiers Mismatch")
+            throw APTParserErrors.blankJsonOutput(error: String(localizationKey: "Uninstall Identifiers Mismatch", type: .error))
         }
         var uninstallDeps = Set<DownloadPackage>(rawUninstalls.compactMap { DownloadPackage(package: $0) })
         
@@ -520,7 +533,7 @@ final class DownloadManager {
         rawInstalls.map({NSLog("SileoLog: rawInstalls: \($0.package)=\($0.version) \($0.local_deb ?? $0.sourceRepo?.url)")})
 
         guard rawInstalls.count == installDepOperation.count else {
-            throw APTParserErrors.blankJsonOutput(error: "Install Identifier Mismatch for Identifiers")
+            throw APTParserErrors.blankJsonOutput(error: String(localizationKey: "Install Identifier Mismatch for Identifiers", type: .error))
         }
         var installDeps = Set<DownloadPackage>(rawInstalls.compactMap { DownloadPackage(package: $0) })
         var installations = self.vars.installations.raw
@@ -784,7 +797,7 @@ final class DownloadManager {
         }
     }
     
-    private func patchPackage(package: Package, fileURL: URL) {
+    private func patchPackage(package: Package, fileURL: URL, patcher: Patcher) {
             let packageID = self.aptEncoded(string: package.package, isArch: false)
             let version = self.aptEncoded(string: package.version, isArch: false)
             let architecture = self.aptEncoded(string: package.architecture ?? "", isArch: true)
@@ -797,10 +810,8 @@ final class DownloadManager {
             NSLog("SileoLog: destURL=\(destURL.path)")
             try! FileManager.default.moveItem(at: fileURL, to: destURL)
         
-            if IsAppAvailable("com.roothide.patcher") {
-                if ShareFileToApp("com.roothide.patcher", destFileName) {
-                    return
-                }
+            if IsAppAvailable(patcher.rawValue), ShareFileToApp(patcher.rawValue, destFileName) {
+                return
             }
     
             let activity = UIActivityViewController(activityItems: [destURL], applicationActivities: nil)
@@ -933,27 +944,42 @@ final class DownloadManager {
                     
                     let title = String(localizationKey: "Not Updated")
                     
-                    let msg = IncompatibleRepo ? String(localizationKey: "please contact @roothideDev to update it") : String(localizationKey: "\(package.package)(\(package.version))\n\nYou can contact the developer of this package to update it for roothide, or you can try to convert it via roothide Patcher.")
+                    let msg: String
+                    if IncompatibleRepo {
+                        msg = String(localizationKey: "please contact @roothideDev to update it")
+                    } else {
+                        msg = String(
+                            format: String(localizationKey: "Patcher_Compatibility_Message"),
+                            package.package, package.version
+                        )
+                    }
                     
                     let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
                     
-                    let installedPatcher = PackageListManager.shared.installedPackage(identifier: "com.roothide.patcher") != nil
-                    
-                    let patchAction = UIAlertAction(title: String(localizationKey: installedPatcher ? "Convert" : "Get Patcher"), style: .destructive) { _ in
-                        alert.dismiss(animated: true, completion: {
-                            var presentModally = false
-                            if installedPatcher {
-                                self.downloadDeb(package:package, msg: String(localizationKey: "Downloading_Package_Status"), handler: self.patchPackage)
-                            }
-                            else if let packageview = URLManager.viewController(url: URL(string: "sileo://package/com.roothide.patcher"), isExternalOpen: true, presentModally: &presentModally) {
-                                
-                                SileoAppDelegate.presentController(packageview)
-                            }
-                        })
-                    }
+                    let installedPatcher = Patcher.allCases.first { IsAppAvailable($0.rawValue) }
+                    let patchers = installedPatcher.map { [$0] } ?? Patcher.allCases
                     
                     if !IncompatibleRepo {
-                        alert.addAction(patchAction)
+                        for patcher in patchers {
+                            let actionTitle = installedPatcher == nil
+                                ? String(format: String(localizationKey: "Patcher_Get"), patcher.name)
+                                : String(localizationKey: "Convert")
+                            let patchAction = UIAlertAction(title: actionTitle, style: .destructive) { _ in
+                                alert.dismiss(animated: true, completion: {
+                                    if installedPatcher != nil {
+                                        self.downloadDeb(package: package, msg: String(localizationKey: "Downloading_Package_Status")) { package, fileURL in
+                                            self.patchPackage(package: package, fileURL: fileURL, patcher: patcher)
+                                        }
+                                    } else {
+                                        var presentModally = false
+                                        if let packageview = URLManager.viewController(url: URL(string: "sileo://package/\(patcher.rawValue)"), isExternalOpen: true, presentModally: &presentModally) {
+                                            SileoAppDelegate.presentController(packageview)
+                                        }
+                                    }
+                                })
+                            }
+                            alert.addAction(patchAction)
+                        }
                     }
                     
                     let okAction = UIAlertAction(title: (package.sourceRepo?.url?.host == "apt.procurs.us") ? String(localizationKey: "OK") : String(localizationKey: "Cancel"), style: .cancel) { _ in
@@ -1082,6 +1108,31 @@ final class DownloadManager {
         }
     }
     
+    func resolveDownloadURL(package: Package, completion: @escaping (String?, URL?) -> Void) {
+        guard let filename = package.filename,
+              let repo = package.sourceRepo,
+              let repoURL = URL(string: repo.rawURL) else {
+            completion(String(localizationKey: "Unknown", type: .error), nil)
+            return
+        }
+
+        let packageURL = filename.hasPrefix("https://") || filename.hasPrefix("http://")
+            ? URL(string: filename)
+            : repoURL.appendingPathComponent(filename)
+
+        overrideDownloadURL(package: package, repo: repo) { error, overrideURL in
+            if overrideURL == nil, let error = error {
+                completion(error, nil)
+                return
+            }
+            guard let url = overrideURL ?? packageURL else {
+                completion(String(localizationKey: "Unknown", type: .error), nil)
+                return
+            }
+            completion(nil, url)
+        }
+    }
+
     private func overrideDownloadURL(package: Package, repo: Repo, completionHandler: @escaping (String?, URL?) -> Void) {
         guard  let providers = self.vars.repoDownloadOverrideProviders[repo.repoURL], !providers.isEmpty else {
             return completionHandler(nil, nil)

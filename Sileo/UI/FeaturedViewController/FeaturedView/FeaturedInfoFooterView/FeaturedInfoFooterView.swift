@@ -19,8 +19,9 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.textAlignment = .center
         self.addSubview(label)
         
-        let sileoPackage = FeaturedInfoFooterView.package
-        let sileoVersion = sileoPackage?.version ?? "Unknown"
+        let sileoVersion = FeaturedInfoFooterView.package?.version
+            ?? (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)
+            ?? String(localizationKey: "Unknown")
         
         let platform = UIDevice.current.platform
         let systemVersion = UIDevice.current.systemVersion
@@ -30,19 +31,13 @@ class FeaturedInfoFooterView: FeaturedBaseView {
         label.textColor = .lightGray
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
-        
-        if sileoVersion == "Unknown" {
-            let sileoPackage2 = FeaturedInfoFooterView.package
-            let sileoVersion2 = sileoPackage2?.version ?? Bundle.main.infoDictionary!["CFBundleShortVersionString"] ?? "Unknown"
-            self.label.text = "\(platform), iOS \(systemVersion), Sileo \(sileoVersion2)\n\(Jailbreak.current.rawValue) | \(Jailbreak.bootstrap.rawValue)"
-        }
     }
     
     static var package: Package? {
         switch Bundle.main.bundleIdentifier {
-        case "org.coolstar.SileoBeta": return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileobeta")
-        case "org.coolstar.SileoNightly": return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileonightly")
-        default: return PackageListManager.shared.installedPackage(identifier: "org.coolstar.sileo")
+        case "org.coolstar.SileoBeta": return PackageListManager.shared.installedPackage(identifier: "org.mlgm.sileobeta")
+        case "org.coolstar.SileoNightly": return PackageListManager.shared.installedPackage(identifier: "org.mlgm.sileonightly")
+        default: return PackageListManager.shared.installedPackage(identifier: "org.mlgm.sileo")
         }
     }
     

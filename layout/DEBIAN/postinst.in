@@ -20,6 +20,7 @@ finish() {
 case "$1" in
 	(configure)
 		rm -rf $sourcesDir/../preferences.d/checkra1n
+		finish reopen
 		exit 0
 		;;
 	(triggered)

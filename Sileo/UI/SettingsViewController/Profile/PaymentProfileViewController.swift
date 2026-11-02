@@ -92,7 +92,7 @@ class PaymentProfileViewController: BaseSettingsViewController, UICollectionView
     
     func presentFatalPaymentError(_ error: PaymentError?) {
         let title: String = String(localizationKey: "Settings_Payment_Provider.Profile.Title", type: .error)
-        let message: String = error?.message ?? String(localizationKey: "Unknown")
+        let message: String = error?.message ?? String(localizationKey: "Unknown", type: .error)
         let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: String(localizationKey: "Cancel"), style: UIAlertAction.Style.default) { _ in
             self.navigationController?.popViewController(animated: true)

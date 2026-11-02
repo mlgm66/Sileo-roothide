@@ -82,12 +82,12 @@ class DatabaseManager {
             return pending
         }
         if packages.isEmpty { return }
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
+        let guid = SQLite.Expression<String>("guid")
+        let package = SQLite.Expression<String>("package")
+        let version = SQLite.Expression<String>("version")
+        let firstSeen = SQLite.Expression<Int64>("firstSeen")
+        let userRead = SQLite.Expression<Int64>("userRead")
+        let repoURL = SQLite.Expression<String>("repoURL")
         let table = Table("Packages")
         
         let stubToCopy = PackageStub(from: packages[0])
@@ -112,12 +112,12 @@ class DatabaseManager {
     
     public func saveStubs(stubs: [PackageStub]) {
         if stubs.isEmpty { return }
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
+        let guid = SQLite.Expression<String>("guid")
+        let package = SQLite.Expression<String>("package")
+        let version = SQLite.Expression<String>("version")
+        let firstSeen = SQLite.Expression<Int64>("firstSeen")
+        let userRead = SQLite.Expression<Int64>("userRead")
+        let repoURL = SQLite.Expression<String>("repoURL")
         let table = Table("Packages")
 
         try? database.transaction {
@@ -139,12 +139,12 @@ class DatabaseManager {
     
     public func stubsAtTimestamp(_ timestamp: Int64) -> [PackageStub] {
         let database = self.database
-        let guid = Expression<String>("guid")
-        let package = Expression<String>("package")
-        let version = Expression<String>("version")
-        let firstSeen = Expression<Int64>("firstSeen")
-        let userRead = Expression<Int64>("userRead")
-        let repoURL = Expression<String>("repoURL")
+        let guid = SQLite.Expression<String>("guid")
+        let package = SQLite.Expression<String>("package")
+        let version = SQLite.Expression<String>("version")
+        let firstSeen = SQLite.Expression<Int64>("firstSeen")
+        let userRead = SQLite.Expression<Int64>("userRead")
+        let repoURL = SQLite.Expression<String>("repoURL")
         let packages = Table("Packages")
         
         var stubs: [PackageStub] = []
@@ -175,8 +175,8 @@ class DatabaseManager {
         DatabaseManager.updateQueue.async {
             let database = self.database
             let packages = Table("Packages")
-            let package = Expression<String>("package")
-            let userRead = Expression<Int64>("userRead")
+            let package = SQLite.Expression<String>("package")
+            let userRead = SQLite.Expression<Int64>("userRead")
             
             let stub = packages.filter(package == dataPackage.package)
             do {
@@ -192,7 +192,7 @@ class DatabaseManager {
             return
         }
         let file = RepoManager.shared.cacheFile(named: "Packages", for: repo).lastPathComponent
-        let repoURL = Expression<String>("repoURL")
+        let repoURL = SQLite.Expression<String>("repoURL")
         let packages = Table("Packages")
         _ = try? database.run(packages.filter(repoURL == file).delete())
     }

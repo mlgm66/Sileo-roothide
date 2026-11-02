@@ -46,7 +46,7 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         
         nameTextField = UITextField()
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
-        nameTextField.placeholder = "name.."
+        nameTextField.placeholder = String(localizationKey: "Theme_Name")
         nameTextField.returnKeyType = .done
         nameTextField.addTarget(self, action: #selector(nameTextFieldDone), for: .primaryActionTriggered)
         navigationItem.title = String(localizationKey: "Create_Theme")
@@ -124,7 +124,7 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         }
         
         let resetButton = UIButton(type: .system)
-        resetButton.setTitle("Reset", for: .normal)
+        resetButton.setTitle(String(localizationKey: "Reset"), for: .normal)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.addTarget(self, action: #selector(resetToDefaults), for: .touchUpInside)
         original.addSubview(resetButton)
@@ -157,16 +157,16 @@ class ThemeCreatorViewController: BaseSettingsViewController {
         case 2:
             tableView.deselectRow(at: indexPath, animated: true)
             guard let themeName = themeName else {
-                let controller = UIAlertController(title: "Please set a name.", message: nil, preferredStyle: .alert)
-                controller.addAction(.init(title: "OK", style: .cancel))
+                let controller = UIAlertController(title: String(localizationKey: "Please set a name."), message: nil, preferredStyle: .alert)
+                controller.addAction(.init(title: String(localizationKey: "OK"), style: .cancel))
                 self.present(controller, animated: true, completion: nil)
                 return
             }
             
             // make sure the name isn't already being used
             guard !SileoThemeManager.shared.themeList.contains(where: { $0.name==themeName || String(localizationKey: $0.name) == themeName }) else {
-                let controller = UIAlertController(title: "Cannot use name", message: "The name \"\(themeName)\" is already being used", preferredStyle: .alert)
-                controller.addAction(.init(title: "OK", style: .cancel, handler: nil))
+                let controller = UIAlertController(title: String(localizationKey: "Cannot use name"), message: String(format: String(localizationKey: "The name \"%@\" is already being used"), themeName), preferredStyle: .alert)
+                controller.addAction(.init(title: String(localizationKey: "OK"), style: .cancel, handler: nil))
                 self.present(controller, animated: true, completion: nil)
                 return
             }
@@ -216,9 +216,9 @@ class ThemeCreatorViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Name"
+            return String(localizationKey: "Name")
         case 1:
-            return "Colors"
+            return String(localizationKey: "Colors")
         default: return nil
         }
     }

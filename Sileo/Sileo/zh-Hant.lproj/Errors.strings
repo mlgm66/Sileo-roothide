@@ -11,8 +11,8 @@
 "Unknown" = "發生未知錯誤。";
 "Error_Indicator" = "錯誤：%@";
 
-"No_Package.Title" = "無法從已安裝的來源找到套件 %@。";
-"No_Package.Body" = "如果這是新的套件，請等待 Sileo 完成更新來源後重試。您可以在網上查詢以得到更多幫助。";
+"No_Package.Title" = "無法從已新增的來源找到套件 %@。";
+"No_Package.Body" = "如果是新發布的套件，請等待 Sileo 完成更新來源後重試。也可上網查詢更多協助。";
 
 "Invalid_URL.Title" = "無效的網址";
 
@@ -23,8 +23,8 @@
 
 "Insecure_Paid_Download" = "下載付款授權套件的來源必須為加密網址（HTTPS）。";
 
-"Invalid_Payment_Provider_Response" = "付款服務提供者發出了無效的回應。";
-"No_Payment_Provider" = "此套件來源不支援 Sileo 付款。如果您曾在 Cydia Store 中購買過此套件，請連結到 Cydia Store 帳號以下載套件。";
+"Invalid_Payment_Provider_Response" = "付款服務提供者傳回了無效的回應。";
+"No_Payment_Provider" = "此套件來源不支援 Sileo 付款。如果已在 Cydia Store 購買此套件，可連結 Cydia Store 帳號下載。";
 
 "Package_Unavailable" = "無法從已安裝的來源取得此套件。請檢查套件來源 %@ 是否可用。";
 
@@ -58,4 +58,54 @@
 "Purchase_Complete_Fail.Title" = "無法完成購買";
 "Purchase_Auth_Complete_Fail.Title" = "無法完成驗證";
 
-"Couldnt_Import_Themes" = "無法滙入主題";
+"Couldnt_Import_Themes" = "無法匯入主題";
+
+"Bad Deb" = "無效的 DEB 檔案";
+"The provided deb file could not be read" = "無法讀取提供的 DEB 檔案。";
+"Packages cannot be added to the queue during install" = "安裝過程中無法將套件加入佇列。";
+"An error occurred while submitting the form." = "提交表單時發生錯誤。";
+"Not Supported" = "不支援此功能";
+"Alternate Icons are currently not supported in macOS" = "macOS 目前不支援更換 App 圖示。";
+"XinaA15 no longer supported" = "不再支援 XinaA15";
+"XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max." = "由於近期變更，Sileo 已無法正常支援 XinaA15。請移除 XinaA15 並改用 Fugu15 Max。";
+"%@\nOutput: %@\nStatus: %ld" = "%@\n輸出：%@\n狀態：%ld";
+"APT was unable to find this package. Please try refreshing your sources.\n\n%@" = "APT 無法找到此套件，請嘗試重新整理來源。\n\n%@";
+"APT returned an invalid response that cannot be parsed.\n\n%@" = "APT 傳回了無法解析的無效回應。\n\n%@";
+"Your Sileo install is incomplete. Please reinstall" = "Sileo 安裝不完整，請重新安裝。";
+"Internal Error: Blank Request sent for packages" = "內部錯誤：套件請求為空。";
+"Uninstall Identifiers Mismatch" = "待移除的套件識別碼不符。";
+"Install Identifier Mismatch for Identifiers" = "待安裝的套件識別碼不符。";
+"Error" = "錯誤";
+"Could not parse release file from %@" = "無法解析 %@ 的發行資訊檔案。";
+"Could not parse release file: %@" = "無法解析發行資訊檔案：%@";
+"No architectures found in %@ (%@)." = "在 %@ 中找不到架構資訊（%@）。";
+"No compatible architectures found in %@ (%@)." = "在 %@ 中找不到相容架構（%@）。";
+"Could not parse release file." = "無法解析發行資訊檔案。";
+"%@ returned status %ld. %@" = "%@ 傳回狀態碼 %ld。%@";
+"Could not find release file for %@" = "找不到 %@ 的發行資訊檔案。";
+"Could not find a preferred architecture for %@" = "找不到 %@ 的偏好架構。";
+"Invalid GPG signature at %@" = "%@ 的 GPG 簽章無效。";
+"%@ has no valid GPG signature" = "%@ 沒有有效的 GPG 簽章。";
+"Could not find packages file for %@" = "找不到 %@ 的套件索引檔案。";
+"Hash for %@ from %@ is invalid." = "來自 %2$@ 的 %1$@ 的雜湊值無效。";
+"Could not decompress packages from %@ (%@): %@" = "無法解壓縮 %@ 的套件索引（%@）：%@";
+"Failed to load file" = "無法載入檔案。";
+"Error starting inflate" = "無法啟動 GZIP 解壓縮。";
+"Failed to Read File" = "無法讀取檔案。";
+"Unknown Error" = "發生未知解壓縮錯誤。";
+"Failed to write data" = "無法寫入資料。";
+"Z_NEED_DICT" = "解壓縮需要預設字典（Z_NEED_DICT）。";
+"Z_DATA_ERROR" = "壓縮資料無效（Z_DATA_ERROR）。";
+"Z_MEM_ERROR" = "解壓縮記憶體不足（Z_MEM_ERROR）。";
+"Z_STREAM_ERROR" = "解壓縮資料流無效（Z_STREAM_ERROR）。";
+"Error opening file" = "無法開啟檔案。";
+"Input file is corrupt" = "輸入檔案已損毀。";
+"Memory Allocation Failed" = "無法配置解壓縮記憶體。";
+"Unsupported Decompressor Flags" = "不支援此解壓縮選項。";
+"Error Reading File" = "讀取檔案時發生錯誤。";
+"Error Writing File" = "寫入檔案時發生錯誤。";
+"Input file is not correct format" = "輸入檔案格式不正確。";
+"Failed to create decompression context" = "無法建立解壓縮環境。";
+"Input File was Empty" = "輸入檔案為空。";
+"Data finished mid-frame" = "壓縮資料不完整，資料框遭截斷。";
+"HTTP status %ld" = "HTTP 狀態碼：%ld";

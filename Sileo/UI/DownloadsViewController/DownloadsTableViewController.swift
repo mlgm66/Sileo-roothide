@@ -814,7 +814,7 @@ extension DownloadsTableViewController: UITableViewDataSource {
                 if index != error.conflictingPackages.count - 1 {
                     packagesDesc += ", "
                 }
-                description += "\(conflict.conflict.rawValue) \(packagesDesc)"
+                description += "\(conflict.conflict.localizedDescription) \(packagesDesc)"
             }
             cell.errorDescription = description
             cell.searchPackageKeyword = error.conflictingPackages.first?.package

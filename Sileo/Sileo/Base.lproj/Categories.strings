@@ -19,3 +19,18 @@
 "Data_Storage" = "Data Storage";
 "Terminal_Support" = "Terminal Support"; 
 "Text_Editors" = "Text Editors";
+
+"System" = "System";
+"Libraries" = "Libraries";
+"Development" = "Development";
+"Archiving" = "Archiving";
+"Administration" = "Administration";
+"Packaging" = "Packaging";
+"Networking" = "Networking";
+"Keyrings" = "Keyrings";
+"Application" = "Application";
+"Localizations" = "Localizations";
+"Security" = "Security";
+"Terminal Support" = "Terminal Support";
+"Data Storage" = "Data Storage";
+"Text Editors" = "Text Editors";

@@ -47,7 +47,7 @@ class FeaturedButtonView: FeaturedBaseView {
             
             button.addSubview(depictView)
         } else if let text = dictionary["text"] as? String {
-            button.setTitle(text, for: .normal)
+            button.setTitle(FeaturedBaseView.localizedText(text), for: .normal)
         }
         
         button.isLink = isLink

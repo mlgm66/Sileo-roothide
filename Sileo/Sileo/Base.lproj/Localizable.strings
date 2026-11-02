@@ -101,7 +101,6 @@
 "Refreshing_Sources_Page" = "Refreshing Sources";
 "Package_Installed_Files_Page" = "Installed Files";
 "Refresh" = "Refresh";
-"Remove" = "Remove";
 
 "All_Packages.Title" = "All Packages";
 "All_Packages.Cell_Subtitle" = "See all packages from your sources";
@@ -123,7 +122,7 @@
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "Enter Manually";
 
 "Untitled_Form" = "Untitled Form";
-"Form_Submitted.Default_Title" = "Submitted Form";
+"Form_Submitted.Default_Title" = "Form Submitted";
 "Form_Submitted.Default_Body" = "The form was submitted successfully.";
 
 "Web_Depiction_Deprecated_Warning" = "Web View depictions are deprecated. Please contact the repo maintainer about updating to native depictions.";
@@ -192,7 +191,7 @@
 "Secondary_Background_Color" = "Secondary Background Color";
 "Label_Color" = "Label Color";
 "Highlight_Color" = "Highlight Color";
-"Seperator_Color" = "Seperator Color";
+"Seperator_Color" = "Separator Color";
 "Header_Color" = "Header Color";
 "Banner_Color" = "Banner Color";
 
@@ -221,7 +220,7 @@
 "Dangerous_Repo.Continue" = "I accept the risks, continue";
 "Dangerous_Repo.Cancel" = "Take me back to safety";
 "Dangerous_Repo.Last_Chance.Title" = "Add Harmful Repo?";
-"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "Dangerous repositories can have devastating effects on your ability to use your device or jailbreak. We strongly recommend that you go back for your own safety. Are you sure you want to add %@?";
 "Dangerous_Repo.Last_Chance.Continue" = "Continue";
 "Dangerous_Repo.Last_Chance.Cancel" = "Go back";
 
@@ -244,3 +243,64 @@
 "Whats_Collected" = "What's Collected";
 "Non_Identifying" = "Only package and non-identifying device information is collected.";
 "Privacy_Policy" = "Privacy Policy";
+
+"Downloaded_Packages.Title" = "Downloaded Packages";
+"Downloaded_Packages.Cell_Subtitle" = "View all downloaded packages";
+"Downloaded_Packages.Empty" = "No downloaded packages yet.\nSwipe right on a package and choose Download.";
+"Downloaded_Packages.Share_Failed" = "Unable to Share Package";
+"Downloaded_Packages.Delete_Failed" = "Unable to Delete Package";
+"Downloaded_Packages.Unreadable" = "Unable to read package information";
+"Downloaded_Packages.Download" = "Download";
+"Downloaded_Packages.Busy" = "Another download is in progress.";
+"Downloaded_Packages.Unavailable" = "This package is not available for download.";
+"Downloaded_Packages.Interrupted" = "The download was interrupted. Please try again.";
+"Downloaded_Packages.Failed" = "Download Failed";
+"Downloaded_Packages.Purchase_Required" = "Purchase this package from its details page before downloading.";
+"Downloaded_Packages.Complete" = "Download Complete";
+"Downloaded_Packages.Saved" = "Saved to Sources -> Downloaded Packages.";
+
+"Updates Available" = "Updates Available";
+"New updates for %d packages are available" = "New updates for %d packages are available";
+"New Update" = "New Update";
+"%@ by %@ has been updated to version %@ on %@" = "%@ by %@ has been updated to version %@ on %@";
+"RootHide Packages" = "RootHide Packages";
+"Select Version" = "Select Version";
+"Select the version of the package to install" = "Select the version of the package to install";
+"Not Updated" = "Not Yet Compatible with RootHide";
+"please contact @roothideDev to update it" = "Please contact @roothideDev to update this package.";
+"Patcher_Compatibility_Message" = "%@ (%@)\n\nYou can contact the developer of this package to update it for RootHide, or try converting it with a patcher.";
+"Convert" = "Convert";
+"Patcher_Get" = "Get %@";
+"Copy" = "Copy";
+"Refresh Sources" = "Refresh Sources";
+"Import Repos" = "Import Repos";
+"Suites" = "Suites";
+"Components" = "Components";
+"Add Theme" = "Add Theme";
+"Name" = "Name";
+"Colors" = "Colors";
+"Reset" = "Reset";
+"Please set a name." = "Please set a name.";
+"Cannot use name" = "Cannot use name";
+"The name \"%@\" is already being used" = "The name \"%@\" is already being used";
+"Retry" = "Retry";
+"Editorial" = "Editorial";
+"%@ by %@" = "%@ by %@";
+"Remind developers to update tweaks for RootHide." = "Remind developers to update tweaks for RootHide.";
+"No RootHide Package(s)" = "No RootHide Packages";
+"Guide" = "Guide";
+"Unknown" = "Unknown";
+"Stock" = "Stock";
+"Pirate English" = "Pirate English";
+"PreDepends" = "Pre-depends on";
+"Recommends" = "Recommends";
+"Conflicts" = "Conflicts with";
+"Replaces" = "Replaces";
+"Depends" = "Depends on";
+"Updating Icon Cache" = "Updating Icon Cache";
+
+"Hot Right Now" = "Hot Right Now";
+"What We're Using" = "What We're Using";
+"X" = "X";
+"Website" = "Website";
+"Support" = "Support";

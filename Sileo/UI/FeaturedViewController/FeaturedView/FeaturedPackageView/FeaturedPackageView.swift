@@ -193,7 +193,7 @@ class FeaturedPackageView: FeaturedBaseView, PackageQueueButtonDataProvider {
             self.parentViewController?.navigationController?.pushViewController(NativePackageViewController.viewController(for: package), animated: true)
         } else {
             let title = String(localizationKey: "Package_Unavailable")
-            let message = String(format: String(localizationKey: "Package_Unavailable"), repoName)
+            let message = String(format: String(localizationKey: "Package_Unavailable", type: .error), repoName)
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: { _ in
                 alertController.dismiss(animated: true, completion: nil)

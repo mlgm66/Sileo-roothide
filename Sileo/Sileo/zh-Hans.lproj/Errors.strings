@@ -11,8 +11,8 @@
 "Unknown" = "发生了一个未知错误。";
 "Error_Indicator" = "错误: %@";
 
-"No_Package.Title" = "无法在 %@ 个已经安装的软件源中找到这个软件包。";
-"No_Package.Body" = "如果这是刚刚出现的，请等待 Sileo 完成刷新，详情请查看在线帮助。";
+"No_Package.Title" = "无法在已添加的软件源中找到软件包 %@。";
+"No_Package.Body" = "如果是新发布的软件包，请等待 Sileo 完成刷新后重试。也可上网查找更多帮助。";
 
 "Invalid_URL.Title" = "无效 URL";
 
@@ -23,8 +23,8 @@
 
 "Insecure_Paid_Download" = "需要付款授权下载的软件包必须经过 SSL 加密 (HTTPS)。";
 
-"Invalid_Payment_Provider_Response" = "此付款服务提供商处理了一个错误的请求。";
-"No_Payment_Provider" = "这个软件源不支持通过 Sileo 付款。如果在 Cydia Store 中购买过此软件包，请链接到 Cydia Store 账户以下载此软件包。";
+"Invalid_Payment_Provider_Response" = "付款服务提供商返回了无效的响应。";
+"No_Payment_Provider" = "此软件源不支持通过 Sileo 付款。如果已在 Cydia Store 购买此软件包，可关联 Cydia Store 账户下载。";
 
 "Package_Unavailable" = "这个软件包在已安装的软件源中不可用。请检查以确保软件源 %@ 可用。";
 
@@ -44,7 +44,7 @@
 "Form_Error.Title" = "无法加载表单";
 "Form_Load_Error" = "无法从服务器载入此表单。";
 "Invalid_Form_Data" = "此服务器提供了无效的表单数据。";
-"Form_Submit_Failure" = "在下载此表单时发生了错误： %@";
+"Form_Submit_Failure" = "尝试提交表单时发生错误：%@";
 "Form_Submit_Error.Title" = "无法提交表单";
 "Form_Action_Host_Mismatch" = "表单操作的 URL 主机与表单的源主机不匹配。";
 
@@ -59,3 +59,53 @@
 "Purchase_Auth_Complete_Fail.Title" = "无法完成验证";
 
 "Couldnt_Import_Themes" = "无法导入主题";
+
+"Bad Deb" = "无效的 DEB 文件";
+"The provided deb file could not be read" = "无法读取提供的 DEB 文件。";
+"Packages cannot be added to the queue during install" = "安装过程中无法将软件包加入队列。";
+"An error occurred while submitting the form." = "提交表单时发生错误。";
+"Not Supported" = "不支持此功能";
+"Alternate Icons are currently not supported in macOS" = "macOS 目前不支持更换应用图标。";
+"XinaA15 no longer supported" = "不再支持 XinaA15";
+"XinaA15 is no longer supported by Sileo, as recent changes make it impossible for Sileo to support XinaA15 in a functional manner. Please remove XinaA15 and switch to Fugu15 Max." = "由于近期变更，Sileo 已无法正常支持 XinaA15。请移除 XinaA15 并改用 Fugu15 Max。";
+"%@\nOutput: %@\nStatus: %ld" = "%@\n输出：%@\n状态：%ld";
+"APT was unable to find this package. Please try refreshing your sources.\n\n%@" = "APT 无法找到此软件包，请尝试刷新软件源。\n\n%@";
+"APT returned an invalid response that cannot be parsed.\n\n%@" = "APT 返回了无法解析的无效响应。\n\n%@";
+"Your Sileo install is incomplete. Please reinstall" = "Sileo 安装不完整，请重新安装。";
+"Internal Error: Blank Request sent for packages" = "内部错误：软件包请求为空。";
+"Uninstall Identifiers Mismatch" = "待卸载的软件包标识不匹配。";
+"Install Identifier Mismatch for Identifiers" = "待安装的软件包标识不匹配。";
+"Error" = "错误";
+"Could not parse release file from %@" = "无法解析 %@ 的发行信息文件。";
+"Could not parse release file: %@" = "无法解析发行信息文件：%@";
+"No architectures found in %@ (%@)." = "在 %@ 中未找到架构信息（%@）。";
+"No compatible architectures found in %@ (%@)." = "在 %@ 中未找到兼容架构（%@）。";
+"Could not parse release file." = "无法解析发行信息文件。";
+"%@ returned status %ld. %@" = "%@ 返回状态码 %ld。%@";
+"Could not find release file for %@" = "找不到 %@ 的发行信息文件。";
+"Could not find a preferred architecture for %@" = "找不到 %@ 的首选架构。";
+"Invalid GPG signature at %@" = "%@ 的 GPG 签名无效。";
+"%@ has no valid GPG signature" = "%@ 没有有效的 GPG 签名。";
+"Could not find packages file for %@" = "找不到 %@ 的软件包索引文件。";
+"Hash for %@ from %@ is invalid." = "来自 %2$@ 的 %1$@ 的哈希值无效。";
+"Could not decompress packages from %@ (%@): %@" = "无法解压 %@ 的软件包索引（%@）：%@";
+"Failed to load file" = "无法加载文件。";
+"Error starting inflate" = "无法启动 GZIP 解压。";
+"Failed to Read File" = "无法读取文件。";
+"Unknown Error" = "发生未知解压错误。";
+"Failed to write data" = "无法写入数据。";
+"Z_NEED_DICT" = "解压需要预设字典（Z_NEED_DICT）。";
+"Z_DATA_ERROR" = "压缩数据无效（Z_DATA_ERROR）。";
+"Z_MEM_ERROR" = "解压内存不足（Z_MEM_ERROR）。";
+"Z_STREAM_ERROR" = "解压数据流无效（Z_STREAM_ERROR）。";
+"Error opening file" = "无法打开文件。";
+"Input file is corrupt" = "输入文件已损坏。";
+"Memory Allocation Failed" = "无法分配解压内存。";
+"Unsupported Decompressor Flags" = "不支持此解压选项。";
+"Error Reading File" = "读取文件时出错。";
+"Error Writing File" = "写入文件时出错。";
+"Input file is not correct format" = "输入文件格式不正确。";
+"Failed to create decompression context" = "无法创建解压上下文。";
+"Input File was Empty" = "输入文件为空。";
+"Data finished mid-frame" = "压缩数据不完整，数据帧被截断。";
+"HTTP status %ld" = "HTTP 状态码：%ld";

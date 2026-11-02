@@ -31,12 +31,16 @@ final class BZIP {
     
 }
 
-enum BZError: String, Error {
+enum BZError: String, LocalizedError {
     case fileLoad = "Failed to load file"
     case allocation = "Error opening file"
     case corrupt = "Input file is corrupt"
     case failedWrite = "Failed to write data"
     
+    var errorDescription: String? {
+        String(localizationKey: rawValue, type: .error)
+    }
+
     init(error: UInt8) {
         switch error {
         case 1: self = .allocation

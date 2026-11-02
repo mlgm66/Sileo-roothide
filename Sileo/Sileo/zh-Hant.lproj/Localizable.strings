@@ -26,13 +26,13 @@
 "Sileo_Team" = "Sileo 團隊";
 "Warning" = "警告";
 "Edit" = "編輯";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Why" = "收集目的";
+"Deny" = "拒絕";
+"Accept" = "同意";
 
 // Popup messages
 "Background_App_Refresh" = "背景 App 重新整理";
-"Background_App_Refresh_Message" = "為了取得最佳和最快的體驗，建議您啟用背景 App 重新整理。您也可以收到插件更新通知！";
+"Background_App_Refresh_Message" = "建議啟用背景 App 重新整理，以獲得更快、更流暢的體驗，並接收插件更新通知。";
 "Upgrade_All_Shortcut_Processing_Message" = "正在重新整理所有套件來源並更新所有套件...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -44,7 +44,7 @@
 "Download_Starting" = "正在開始...";
 "Download_Progress" = "%@（共 %@）"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "以下的套件是被列為重要/必需的：%@\n 移除這些套件可能會對您的裝置造成不可還原的傷害而且有可能需要您回復裝置。請僅在您了解並願意承擔風險的情況下繼續。";
+"Essential_Warning" = "以下套件被列為重要或必需：%@\n移除這些套件可能對裝置造成無法復原的損壞，並可能需要回復裝置。請僅在清楚了解操作後果的情況下繼續。";
 
 "Queue_Confirm_Button" = "確認";
 "Queue_Clear_Button" = "清除佇列";
@@ -83,7 +83,7 @@
 "Package_Search.Placeholder" = "搜尋套件";
 "Sort_Name" = "名稱";
 "Sort_Date" = "日期";
-"Sort_Install_Size" = "大小";
+"Sort_Install_Size" = "安裝大小";
 "Sort_By" = "排序";
 
 "Package_Unavailable" = "無法取得套件";
@@ -92,7 +92,7 @@
 "Packages_By_Author" = "%@ 的套件"; // %@ = author name
 
 "Featured_Page" = "精選";
-"News_Page" = "新聞";
+"News_Page" = "最新";
 "Sources_Page" = "來源";
 "Packages_Page" = "套件";
 "Search_Page" = "搜尋";
@@ -101,7 +101,6 @@
 "Refreshing_Sources_Page" = "正在重新整理來源";
 "Package_Installed_Files_Page" = "已安裝檔案";
 "Refresh" = "重新整理";
-"Remove" = "Remove";
 
 "All_Packages.Title" = "所有套件";
 "All_Packages.Cell_Subtitle" = "查看已新增來源的所有套件";
@@ -118,13 +117,13 @@
 "Add_Source.Body" = "新增套件來源網址";
 "Add_Source.Button.Add" = "新增來源";
 "Add_Dist_Repo" = "新增發行版來源";
-"Incorrect_Repo" = "%@ 似乎不是有效的來源⁉️ 來源可能處於離線狀態，或者您可能輸入了錯誤的網址。您仍要添加該來源嗎？";
+"Incorrect_Repo" = "%@ 似乎不是有效的來源⁉️ 來源可能已離線，或輸入的網址有誤。仍要新增嗎？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手動輸入";
 
 "Untitled_Form" = "未命名表單";
-"Form_Submitted.Default_Title" = "已提交表格";
-"Form_Submitted.Default_Body" = "成功提交表格。";
+"Form_Submitted.Default_Title" = "表單已提交";
+"Form_Submitted.Default_Body" = "成功提交表單。";
 
 "Web_Depiction_Deprecated_Warning" = "Web View 敘述已經被棄用。請聯絡套件來源維護者以更新至原生敘述。";
 
@@ -138,7 +137,7 @@
 "Version" = "版本";
 "Show_Package_Contents_Button" = "顯示套件內容";
 
-"Licenses_Page_Title" = "許可";
+"Licenses_Page_Title" = "授權條款";
 "Alternate_Icon_Title" = "自定義圖示";
 
 "Settings_Payment_Provider_Heading" = "付款服務提供者";
@@ -146,7 +145,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "已購買套件";
 "Settings_Payment_Provider.No_Purchases" = "沒有已購買的套件";
-"Authenticate_To_Purchase" = "驗證以完成您的購買";
+"Authenticate_To_Purchase" = "驗證以完成購買";
 
 "Settings" = "設定";
 "Settings_Page_Title" = "設定";
@@ -161,13 +160,13 @@
 "Show_Provisional" = "顯示來自 Canister 的套件";
 "Show_Ignored_Updates" = "顯示已忽略更新";
 "Developer_Mode" = "開發者模式";
-"Pog_Developer" = "您現在已成為開發者！";
-"Developer_Mode_Explain" = "開發者模式會禁用付款 API 的 HTTPS 請求。";
+"Pog_Developer" = "你現在是開發者！";
+"Developer_Mode_Explain" = "開發者模式會取消付款 API 必須使用 HTTPS 的限制。";
 "Auto_Refresh_Sources" = "自動重新整理來源";
 "iCloud_Profile" = "在精選顯示 iCloud 個人檔案照片";
 "Cache_Size" = "快取大小";
-"Clear_Cache" = "清除網頁快取";
-"Clear_Cache_Message" = "您想清除網頁快取嗎？這將節省 %@";
+"Clear_Cache" = "清除網路快取";
+"Clear_Cache_Message" = "要清除網路快取嗎？這將釋出 %@ 空間。";
 "Language" = "語言";
 "Use_System_Language" = "使用系統語言";
 "Apply_Changes" = "套用變更內容";
@@ -192,7 +191,7 @@
 "Secondary_Background_Color" = "次要背景顏色";
 "Label_Color" = "標籤顏色";
 "Highlight_Color" = "突顯顏色";
-"Seperator_Color" = "分隔符顏色";
+"Seperator_Color" = "分隔線顏色";
 "Header_Color" = "標題顏色";
 "Banner_Color" = "橫幅顏色";
 
@@ -202,12 +201,12 @@
 "Payment_Provider_Signed_In_With_Name" = "已登入為 %@"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "登出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "登出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登入前，您將無法下載已購買的套件。";
+"Payment_Provider_Sign_Out_Confirm.Body" = "登出後，需重新登入才能下載已購買的套件。";
 
 "Show_Install_Details" = "顯示詳細資料";
 "Hide_Install_Details" = "隱藏詳細資料";
 "Open_In_Filza" = "在 Filza 打開";
-"Copy_Path" = "拷貝目錄";
+"Copy_Path" = "拷貝路徑";
 
 "After_Install_Relaunch" = "重新啟動 Sileo";
 "After_Install_Respring" = "重新啟動主畫面";
@@ -217,18 +216,18 @@
 "After_Install_Reboot_Later" = "稍後重新啟動裝置";
 
 "Dangerous_Repo.Title" = "危險來源";
-"Dangerous_Repo.Body" = "您正在新增一個可能因為含有盜版行為、違法內容或病毒而被標記的套件來源。\n\n被標記的套件來源經常發布許多轉載的套件（包括許多免費和收費的套件）。這些套件可能會影響到您的隱私和裝置，甚至越獄狀態。我們建議您提高警覺並遠離有害的套件。";
+"Dangerous_Repo.Body" = "正在新增的套件來源因盜版、違法內容或惡意軟體等原因被標記為有害。\n\n這些來源經常提供行為異常的套件，包括被免費散布的付費套件或其他惡意套件。這些套件可能對裝置和隱私造成長期影響，甚至影響越獄能力。請務必謹慎，避免安裝有害套件。";
 "Dangerous_Repo.Continue" = "我接受風險並繼續";
 "Dangerous_Repo.Cancel" = "帶我回到安全地帶";
 "Dangerous_Repo.Last_Chance.Title" = "新增危險來源？";
-"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能會對裝置或越獄狀態造成破壞性的影響。我們建議您為了裝置的安全並返回。您確認要新增 %@ 嗎？"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "危險的套件來源可能嚴重影響裝置使用或越獄環境。強烈建議返回以保障安全。確定要新增 %@ 嗎？";
 "Dangerous_Repo.Last_Chance.Continue" = "繼續";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
 "Export" = "匯出";
-"Export_Packages" = "您想匯出您的套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
-"Export_Sources" = "您想匯出您的來源清單嗎？所有套件來源的網址將複製到剪貼板。";
+"Export_Packages" = "要匯出套件清單嗎？所有套件的名稱和版本將複製到剪貼板。";
+"Export_Sources" = "要匯出來源清單嗎？所有來源的網址將複製到剪貼板。";
 "Export_Yes" = "確認";
 "Export_No" = "取消";
 
@@ -236,11 +235,72 @@
 "View_Depiction" = "查看敘述";
 
 "Copy_ID" = "拷貝 ID";
-"Canister_Policy" = "Canister Privacy Policy";
-"Download_Analytics" = "Download Analytics";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
-"Change_Later" = "You can always change your choice later.";
-"Whats_Collected" = "What's Collected";
-"Non_Identifying" = "Only package and non-identifying device information is collected.";
-"Privacy_Policy" = "Privacy Policy";
+"Canister_Policy" = "Canister 隱私權政策";
+"Download_Analytics" = "下載統計";
+"Provided_Canister" = "由 Canister 提供";
+"Data_Collected" = "收集的資料用於更新精選頁面及各種推薦來源。";
+"Change_Later" = "可隨時變更選擇。";
+"Whats_Collected" = "收集哪些資訊";
+"Non_Identifying" = "僅收集套件資訊與無法識別個人身分的裝置資訊。";
+"Privacy_Policy" = "隱私權政策";
+
+"Downloaded_Packages.Title" = "已下載的套件";
+"Downloaded_Packages.Cell_Subtitle" = "查看已下載的所有套件";
+"Downloaded_Packages.Empty" = "尚未下載套件\n在套件列表右滑，選擇「下載」";
+"Downloaded_Packages.Share_Failed" = "無法分享套件";
+"Downloaded_Packages.Delete_Failed" = "無法刪除套件";
+"Downloaded_Packages.Unreadable" = "無法讀取套件資訊";
+"Downloaded_Packages.Download" = "下載";
+"Downloaded_Packages.Busy" = "已有套件正在下載。";
+"Downloaded_Packages.Unavailable" = "此套件暫時無法下載。";
+"Downloaded_Packages.Interrupted" = "下載已中斷，請重試。";
+"Downloaded_Packages.Failed" = "下載失敗";
+"Downloaded_Packages.Purchase_Required" = "請先在套件詳情中完成購買，再下載此套件。";
+"Downloaded_Packages.Complete" = "下載完成";
+"Downloaded_Packages.Saved" = "已儲存至「來源 -> 已下載的套件」";
+
+"Updates Available" = "有可用更新";
+"New updates for %d packages are available" = "有 %d 個套件可更新";
+"New Update" = "新更新";
+"%@ by %@ has been updated to version %@ on %@" = "%@（開發者：%@）已更新為版本 %@，來源：%@。";
+"RootHide Packages" = "RootHide 套件";
+"Select Version" = "選擇版本";
+"Select the version of the package to install" = "選擇要安裝的套件版本";
+"Not Updated" = "尚未適配 RootHide";
+"please contact @roothideDev to update it" = "請聯絡 @roothideDev 更新此套件。";
+"Patcher_Compatibility_Message" = "%@（%@）\n\n可聯絡套件開發者適配 RootHide，或嘗試使用轉換工具。";
+"Convert" = "轉換";
+"Patcher_Get" = "取得 %@";
+"Copy" = "拷貝";
+"Refresh Sources" = "重新整理來源";
+"Import Repos" = "匯入來源";
+"Suites" = "發行版";
+"Components" = "元件";
+"Add Theme" = "新增主題";
+"Name" = "名稱";
+"Colors" = "顏色";
+"Reset" = "重設";
+"Please set a name." = "請輸入主題名稱。";
+"Cannot use name" = "無法使用此名稱";
+"The name \"%@\" is already being used" = "名稱「%@」已被使用。";
+"Retry" = "重試";
+"Editorial" = "專欄";
+"%@ by %@" = "%@，作者：%@";
+"Remind developers to update tweaks for RootHide." = "提醒開發者更新插件以適配 RootHide。";
+"No RootHide Package(s)" = "沒有可用的 RootHide 套件。";
+"Guide" = "指南";
+"Unknown" = "未知";
+"Stock" = "預設";
+"Pirate English" = "海盜英語";
+"PreDepends" = "預先相依";
+"Recommends" = "建議";
+"Conflicts" = "衝突";
+"Replaces" = "取代";
+"Depends" = "相依";
+"Updating Icon Cache" = "正在更新圖示快取";
+
+"Hot Right Now" = "現正熱門";
+"What We're Using" = "我們在用";
+"X" = "X";
+"Website" = "官方網站";
+"Support" = "協助與支援";

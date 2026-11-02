@@ -1,0 +1,8 @@
+"NSFaceIDUsageDescription" = "Sileo 使用面容 ID 快速验证购买操作。";
+"Upgrade All" = "全部更新";
+"Refresh" = "刷新";
+"Add Source" = "添加软件源";
+"Packages" = "软件包";
+"Debian Package" = "Debian 软件包";
+"APT Sources File" = "APT 软件源文件";
+"APT List File" = "APT 软件源列表文件";

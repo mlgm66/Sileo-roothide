@@ -73,7 +73,7 @@ final public class LanguageHelper {
            let bundle = Bundle(path: path) {
             self.isRtl = Locale.characterDirection(forLanguage: selectedLanguage) == .rightToLeft
             self.primaryBundle = bundle
-            self.locale = Locale(identifier: selectedLanguage)
+            self.locale = Locale(identifier: selectedLanguage == "Base" ? "en" : selectedLanguage)
             return
         }
         
@@ -82,7 +82,7 @@ final public class LanguageHelper {
            let bundle = Bundle(path: path) {
             self.primaryBundle = bundle
             self.isRtl = false
-            self.locale = Locale(identifier: selectedLanguage)
+            self.locale = Locale(identifier: "en")
             return
         }
     }

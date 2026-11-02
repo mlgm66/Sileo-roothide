@@ -30,13 +30,17 @@ final class ZSTD {
     }
 }
 
-enum ZSTDError: String, Error {
+enum ZSTDError: String, LocalizedError {
     case fileLoad = "Failed to load file"
     case context = "Failed to create decompression context"
     case unknown = "Unknown Error"
     case empty = "Input File was Empty"
     case midFrame = "Data finished mid-frame"
     case failedWrite = "Failed to write data"
+
+    var errorDescription: String? {
+        String(localizationKey: rawValue, type: .error)
+    }
 
     init(error: UInt8) {
         switch error {

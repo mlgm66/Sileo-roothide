@@ -28,7 +28,8 @@ class ThemesSectionViewController: BaseSettingsViewController {
             tableView?.reloadData()
             print("Imported theme(s)")
         } catch {
-            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes", type: .error), message: "Error: \(error.localizedDescription)", preferredStyle: .alert)
+            let message = String(format: String(localizationKey: "Error_Indicator", type: .error), error.localizedDescription)
+            let controller = UIAlertController(title: String(localizationKey: "Couldnt_Import_Themes", type: .error), message: message, preferredStyle: .alert)
             self.present(controller, animated: true, completion: nil)
         }
         
@@ -49,7 +50,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
     
     @objc
     func promptController() {
-        let controller = UIAlertController(title: "Add Theme", message: nil, preferredStyle: .actionSheet)
+        let controller = UIAlertController(title: String(localizationKey: "Add Theme"), message: nil, preferredStyle: .actionSheet)
         controller.addAction(.init(title: String(localizationKey: "Create_Theme"), style: .default, handler: { _ in
             let creatorVC = ThemeCreatorViewController(style: .grouped)
             creatorVC.sectionVC = self
@@ -117,7 +118,7 @@ class ThemesSectionViewController: BaseSettingsViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        let removeAction = UIContextualAction(style: .destructive, title: "Remove") { _, _, handler in
+        let removeAction = UIContextualAction(style: .destructive, title: String(localizationKey: "Remove")) { _, _, handler in
             print("Removing \(self.userThemes[indexPath.row].name)")
             self.userThemes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

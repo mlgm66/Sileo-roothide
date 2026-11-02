@@ -11,7 +11,7 @@
 
 "About" = "关于";
 "Close" = "关闭";
-"Double tap to open." = "双击以打开.";
+"Double tap to open." = "双击以打开。";
 "Untitled_Repo" = "未命名的软件源";
 "OK" = "确定";
 "Done" = "完成";
@@ -26,13 +26,13 @@
 "Sileo_Team" = "Sileo 团队";
 "Warning" = "警告";
 "Edit" = "编辑";
-"Why" = "Why";
-"Deny" = "Deny";
-"Accept" = "Accept";
+"Why" = "收集目的";
+"Deny" = "拒绝";
+"Accept" = "同意";
 
 // Popup messages
 "Background_App_Refresh" = "后台App刷新";
-"Background_App_Refresh_Message" = "为了获得最佳和最快的体验，建议启用后台App刷新， 您可以收到插件更新通知！";
+"Background_App_Refresh_Message" = "建议启用后台 App 刷新，以获得更快、更流畅的体验，并接收插件更新通知。";
 "Upgrade_All_Shortcut_Processing_Message" = "刷新所有软件源并更新所有软件包...";
 
 // Statuses for queued/downloading packages. Shown under their name in the queue/status popup.
@@ -44,7 +44,7 @@
 "Download_Starting" = "开始中…";
 "Download_Progress" = "%@ (总共 %@)"; // first %@ = amount downloaded, second %@ = total to download
 
-"Essential_Warning" = "下列软件包被列为必需的: %@\n 删除这些软件包可能会对您的设备造成不可逆的损坏，并且可能需要您进行恢复。只有当您确定您知道自己在做什么的时候才继续。";
+"Essential_Warning" = "以下软件包被列为必需：%@\n移除这些软件包可能对设备造成不可逆的损坏，并可能需要恢复设备。请仅在清楚了解操作后果的情况下继续。";
 
 "Queue_Confirm_Button" = "确认";
 "Queue_Clear_Button" = "清除队列";
@@ -92,7 +92,7 @@
 "Packages_By_Author" = "%@ 的软件包"; // %@ = author name
 
 "Featured_Page" = "精选";
-"News_Page" = "新闻";
+"News_Page" = "最新";
 "Sources_Page" = "软件源";
 "Packages_Page" = "软件包";
 "Search_Page" = "搜索";
@@ -117,13 +117,13 @@
 "Add_Source.Body" = "新增软件源地址";
 "Add_Source.Button.Add" = "添加软件源";
 "Add_Dist_Repo" = "添加发行版软件源";
-"Incorrect_Repo" = "%@ 似乎不是有效的软件源⁉️ 软件源可能处于离线状态，或者您输入错误。是否继续添加？";
+"Incorrect_Repo" = "%@ 似乎不是有效的软件源⁉️ 软件源可能已离线，或输入的网址有误。仍要添加吗？";
 
 "Auto_Add_Pasteboard_Sources.Button.Manual" = "手动输入";
 
-"Untitled_Form" = "未命名的表格";
-"Form_Submitted.Default_Title" = "已提交的表格";
-"Form_Submitted.Default_Body" = "表格提交成功.";
+"Untitled_Form" = "未命名表单";
+"Form_Submitted.Default_Title" = "表单已提交";
+"Form_Submitted.Default_Body" = "表单提交成功。";
 
 "Web_Depiction_Deprecated_Warning" = "Web 描述视图已经被弃用。请联系软件源维护者，了解有关从旧视图升级的信息。";
 
@@ -137,7 +137,7 @@
 "Version" = "版本";
 "Show_Package_Contents_Button" = "显示软件包内容";
 
-"Licenses_Page_Title" = "法律资讯";
+"Licenses_Page_Title" = "开源许可";
 "Alternate_Icon_Title" = "自定义图标";
 
 "Settings_Payment_Provider_Heading" = "付款服务提供商";
@@ -145,7 +145,7 @@
 
 "Settings_Payment_Provider.Purchases_Heading" = "购买";
 "Settings_Payment_Provider.No_Purchases" = "没有购买";
-"Authenticate_To_Purchase" = "验证以完成您的购买";
+"Authenticate_To_Purchase" = "验证以完成购买";
 
 "Settings" = "设置";
 "Settings_Page_Title" = "设置";
@@ -157,16 +157,16 @@
 "Show_Search_History" = "显示搜索记录";
 "Auto_Confirm_Upgrade_All_Shortcut" = "触感触控全部更新自动确认";
 "Swipe_Actions" = "滑动动作";
-"Show_Provisional" = "搜索增强 （Canister）";
+"Show_Provisional" = "显示来自 Canister 的软件包";
 "Show_Ignored_Updates" = "显示忽略的更新";
 "Developer_Mode" = "开发者模式";
-"Pog_Developer" = "您现在是开发者！";
-"Developer_Mode_Explain" = "开发者模式会关闭付款 API 接口的 HTTPS 请求。";
+"Pog_Developer" = "你现在是开发者！";
+"Developer_Mode_Explain" = "开发者模式会取消付款 API 必须使用 HTTPS 的限制。";
 "Auto_Refresh_Sources" = "自动刷新软件源";
 "iCloud_Profile" = "在精选显示 iCloud 头像";
 "Cache_Size" = "缓存";
 "Clear_Cache" = "清除网络缓存";
-"Clear_Cache_Message" = "您想清除网络缓存吗？这将节省 %@";
+"Clear_Cache_Message" = "要清除网络缓存吗？这将释放 %@ 空间。";
 "Language" = "语言";
 "Use_System_Language" = "使用系统语言";
 "Apply_Changes" = "应用更改";
@@ -175,9 +175,9 @@
 "Always_Show_Install_Log" = "总是显示安装详情";
 "Auto_Show_Queue" = "全部升级时显示队列";
 
-"Sileo_Light" = "Sileo浅色模式";
-"Sileo_Dark" = "Sileo深色模式";
-"Sileo_Adaptive" = "Sileo自适配";
+"Sileo_Light" = "Sileo 浅色模式";
+"Sileo_Dark" = "Sileo 深色模式";
+"Sileo_Adaptive" = "Sileo 自适应";
 "System" = "跟随系统";
 "Theme_Settings" = "主题设置";
 
@@ -191,22 +191,22 @@
 "Secondary_Background_Color" = "次要背景颜色";
 "Label_Color" = "标签颜色";
 "Highlight_Color" = "突显颜色";
-"Seperator_Color" = "分隔符颜色";
+"Seperator_Color" = "分隔线颜色";
 "Header_Color" = "标题颜色";
 "Banner_Color" = "横幅颜色";
 
 
-"Cydia_Sign_In" = "登陆 Cydia Store";
-"Payment_Provider_Signed_In" = "登陆";
-"Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登陆"; // %@ = user's name
+"Cydia_Sign_In" = "登录 Cydia Store";
+"Payment_Provider_Signed_In" = "登录";
+"Payment_Provider_Signed_In_With_Name" = "已作为 %@ 登录"; // %@ = user's name
 "Payment_Provider_Sign_Out" = "退出";
 "Payment_Provider_Sign_Out_Confirm.Title" = "退出 %@"; // %@ = payment provider name
-"Payment_Provider_Sign_Out_Confirm.Body" = "直到重新登陆前，您将不能下载已经购买的软件包。";
+"Payment_Provider_Sign_Out_Confirm.Body" = "退出登录后，需重新登录才能下载已购买的软件包。";
 
 "Show_Install_Details" = "显示详情";
 "Hide_Install_Details" = "隐藏详情";
 "Open_In_Filza" = "在 Filza 打开";
-"Copy_Path" = "复制目录";
+"Copy_Path" = "复制路径";
 
 "After_Install_Relaunch" = "重启 Sileo";
 "After_Install_Respring" = "重启 SpringBoard";
@@ -216,18 +216,18 @@
 "After_Install_Reboot_Later" = "稍后重启设备";
 
 "Dangerous_Repo.Title" = "危险的软件源";
-"Dangerous_Repo.Body" = "您正在添加一个可能因为含有盗版行为，违法内容，病毒而被标记的软件源。\n\n被标记的软件源可能经常发布许多转载的软件包（包括许多免费和收费的软件包）。这些软件包可能会影响到您的隐私和设备，有时可能会影响到越狱环境。我们建议您提高谨慎以远离有害软件包。";
+"Dangerous_Repo.Body" = "正在添加的软件源因盗版、违法内容或恶意软件等原因被标记为有害。\n\n这些软件源经常提供行为异常的软件包，包括被免费分发的付费软件包或其他恶意软件包。这些软件包可能对设备和隐私造成长期影响，甚至影响越狱能力。请务必谨慎，避免安装有害软件包。";
 "Dangerous_Repo.Continue" = "我接受风险，继续。";
 "Dangerous_Repo.Cancel" = "带我回到安全地带";
 "Dangerous_Repo.Last_Chance.Title" = "添加危险的软件源？";
-"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能会对设备/越狱环境造成破坏性的影响.我们建议您为了设备的安全而取消操作. %@"; // %@ = repo url
+"Dangerous_Repo.Last_Chance.Body" = "危险的软件源可能严重影响设备使用或越狱环境。强烈建议返回以保障安全。确定要添加 %@ 吗？";
 "Dangerous_Repo.Last_Chance.Continue" = "继续";
 "Dangerous_Repo.Last_Chance.Cancel" = "返回";
 
 // All export-based strings
 "Export" = "导出";
-"Export_Packages" = "请问需要导出软件包列表吗？这将会复制所有软件包名称和版本到您的剪贴板。";
-"Export_Sources" = "请问需要导出您的软件源地址吗？ 这将复制所有软件源地址到您的剪贴板。";
+"Export_Packages" = "要导出软件包列表吗？所有软件包的名称和版本将复制到剪贴板。";
+"Export_Sources" = "要导出软件源列表吗？所有软件源地址将复制到剪贴板。";
 "Export_Yes" = "好的，导出。";
 "Export_No" = "不，取消。";
 
@@ -235,11 +235,72 @@
 "View_Depiction" = "查看介绍";
 
 "Copy_ID" = "复制 ID";
-"Canister_Policy" = "Canister Privacy Policy";
-"Download_Analytics" = "Download Analytics";
-"Provided_Canister" = "Provided by Canister";
-"Data_Collected" = "Data collected is used to update the featured page and various recommendation sources.";
-"Change_Later" = "You can always change your choice later.";
-"Whats_Collected" = "What's Collected";
-"Non_Identifying" = "Only package and non-identifying device information is collected.";
-"Privacy_Policy" = "Privacy Policy";
+"Canister_Policy" = "Canister 隐私政策";
+"Download_Analytics" = "下载统计";
+"Provided_Canister" = "由 Canister 提供";
+"Data_Collected" = "收集的数据用于更新精选页面及各种推荐来源。";
+"Change_Later" = "可随时更改选择。";
+"Whats_Collected" = "收集哪些信息";
+"Non_Identifying" = "仅收集软件包信息和无法识别个人身份的设备信息。";
+"Privacy_Policy" = "隐私政策";
+
+"Downloaded_Packages.Title" = "已下载的软件包";
+"Downloaded_Packages.Cell_Subtitle" = "查看已下载的所有软件包";
+"Downloaded_Packages.Empty" = "尚未下载软件包\n在软件包列表右滑，选择“下载”";
+"Downloaded_Packages.Share_Failed" = "无法分享软件包";
+"Downloaded_Packages.Delete_Failed" = "无法删除软件包";
+"Downloaded_Packages.Unreadable" = "无法读取软件包信息";
+"Downloaded_Packages.Download" = "下载";
+"Downloaded_Packages.Busy" = "已有软件包正在下载。";
+"Downloaded_Packages.Unavailable" = "此软件包暂时无法下载。";
+"Downloaded_Packages.Interrupted" = "下载已中断，请重试。";
+"Downloaded_Packages.Failed" = "下载失败";
+"Downloaded_Packages.Purchase_Required" = "请先在软件包详情中完成购买，再下载此软件包。";
+"Downloaded_Packages.Complete" = "下载完成";
+"Downloaded_Packages.Saved" = "已保存到“软件源 -> 已下载的软件包”";
+
+"Updates Available" = "有可用更新";
+"New updates for %d packages are available" = "有 %d 个软件包可更新";
+"New Update" = "新更新";
+"%@ by %@ has been updated to version %@ on %@" = "%@（开发者：%@）已更新为版本 %@，来源：%@。";
+"RootHide Packages" = "RootHide 软件包";
+"Select Version" = "选择版本";
+"Select the version of the package to install" = "选择要安装的软件包版本";
+"Not Updated" = "尚未适配 RootHide";
+"please contact @roothideDev to update it" = "请联系 @roothideDev 更新此软件包。";
+"Patcher_Compatibility_Message" = "%@（%@）\n\n可联系软件包开发者适配 RootHide，或尝试使用转换工具。";
+"Convert" = "转换";
+"Patcher_Get" = "获取 %@";
+"Copy" = "复制";
+"Refresh Sources" = "刷新软件源";
+"Import Repos" = "导入软件源";
+"Suites" = "发行版";
+"Components" = "组件";
+"Add Theme" = "添加主题";
+"Name" = "名称";
+"Colors" = "颜色";
+"Reset" = "重置";
+"Please set a name." = "请输入主题名称。";
+"Cannot use name" = "无法使用此名称";
+"The name \"%@\" is already being used" = "名称“%@”已被使用。";
+"Retry" = "重试";
+"Editorial" = "专栏";
+"%@ by %@" = "%@，作者：%@";
+"Remind developers to update tweaks for RootHide." = "提醒开发者更新插件以适配 RootHide。";
+"No RootHide Package(s)" = "没有可用的 RootHide 软件包。";
+"Guide" = "指南";
+"Unknown" = "未知";
+"Stock" = "默认";
+"Pirate English" = "海盗英语";
+"PreDepends" = "预依赖";
+"Recommends" = "推荐";
+"Conflicts" = "冲突";
+"Replaces" = "替换";
+"Depends" = "依赖";
+"Updating Icon Cache" = "正在更新图标缓存";
+
+"Hot Right Now" = "当前热门";
+"What We're Using" = "我们在用";
+"X" = "X";
+"Website" = "官方网站";
+"Support" = "帮助与支持";

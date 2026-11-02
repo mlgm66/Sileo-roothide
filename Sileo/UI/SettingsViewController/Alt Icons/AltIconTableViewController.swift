@@ -30,7 +30,7 @@ class AltIconTableViewController: UITableViewController {
     }
     
     var icons = [
-        AltIcon(displayName: "Stock", author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
+        AltIcon(displayName: String(localizationKey: "Stock"), author: "Dennis Bednarz", key: nil, image: altImage("AppIcon60x60")),
         AltIcon(displayName: "OG", author: "Dennis Bednarz", key: "OG", image: altImage("OG")),
         AltIcon(displayName: "Pride", author: "emiyl0", key: "Pride", image: altImage("Pride")),
         AltIcon(displayName: "Flower Sileo", author: "flowerible", key: "FlowerSileo", image: altImage("FlowerSileo")),

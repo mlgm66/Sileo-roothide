@@ -197,7 +197,7 @@ final class Repo: Equatable {
         if !repoName.isEmpty {
             return repoName
         }
-        return NSLocalizedString("Untitled_Repo", comment: "")
+        return String(localizationKey: "Untitled_Repo")
     }
     
     var url: URL? {

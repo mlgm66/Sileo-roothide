@@ -522,7 +522,7 @@ class APTWrapper {
                 }
             }
             if !difference.isEmpty {
-                outputCallback("Updating Icon Cache\n", debugFD)
+                outputCallback(String(localizationKey: "Updating Icon Cache") + "\n", debugFD)
                 for appName in difference {
                     if appName == Bundle.main.bundleURL.lastPathComponent {
                         refreshSileo = true

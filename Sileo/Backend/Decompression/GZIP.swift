@@ -30,7 +30,7 @@ final class GZIP {
     }
 }
 
-enum GZIPError: String, Error {
+enum GZIPError: String, LocalizedError {
     case fileLoad = "Failed to load file"
     case inflate = "Error starting inflate"
     case fileRead = "Failed to Read File"
@@ -42,6 +42,10 @@ enum GZIPError: String, Error {
     case Z_MEM_ERROR = "Z_MEM_ERROR"
     case Z_STREAM_ERROR = "Z_STREAM_ERROR"
     
+    var errorDescription: String? {
+        String(localizationKey: rawValue, type: .error)
+    }
+
     init(error: UInt8) {
         switch error {
         case 2: self = .inflate

@@ -118,8 +118,6 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weakNavController = self.navigationController
-        
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any,
                                                selector: #selector(updateSileoColors),
@@ -486,6 +484,7 @@ class PackageViewController: SileoViewController, PackageQueueButtonDataProvider
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        weakNavController = self.navigationController
         
         self.statusBarStyle = .default
         

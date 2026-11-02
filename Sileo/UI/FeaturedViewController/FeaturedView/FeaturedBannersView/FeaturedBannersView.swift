@@ -145,8 +145,8 @@ class FeaturedBannersView: FeaturedBaseView, FeaturedBannerViewPreview {
         guard let controller = self.viewController(bannerView: bannerView) else {
             if let package=bannerView.banner["package"] as? String, !package.isEmpty {
                 if let repoName = bannerView.banner["repoName"] as? String {
-                    let title = String(localizationKey: "Package Unavailable")
-                    let message = String(format: String(localizationKey: "Package_Unavailable"), repoName)
+                    let title = String(localizationKey: "Package_Unavailable")
+                    let message = String(format: String(localizationKey: "Package_Unavailable", type: .error), repoName)
                     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: String(localizationKey: "OK"), style: .cancel, handler: { _ in
                         alertController.dismiss(animated: true, completion: nil)

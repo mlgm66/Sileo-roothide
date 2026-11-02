@@ -78,7 +78,7 @@ class PaymentManager {
                 return completion(.invalidResponse, nil)
             }
             guard reponse.statusCode == 200 else {
-                return completion(PaymentError(message: "statusCode=\(reponse.statusCode)"), nil)
+                return completion(PaymentError(message: String(format: String(localizationKey: "HTTP status %ld", type: .error), reponse.statusCode)), nil)
             }
             guard let data = data else {
                 return completion(.invalidResponse, nil)
